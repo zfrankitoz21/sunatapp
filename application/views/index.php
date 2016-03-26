@@ -3,7 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Sunat - Intranet</title>
-	<link rel="stylesheet" href="<?=base_url()?>css/styles.css">
+	<link rel="stylesheet" href="css/styles.css">
+	<!--[if lt IE 9]>
+		<script type="text/javascript" src="js/modernizr.js"></script>
+   <![endif]-->
 </head>
 <body>
 <header>
@@ -11,9 +14,9 @@
 	    <div class="line-top"><div class="line-min-top"></div></div>
 		<div class="content header-main">
 			<div class="logo">
-				<h1><a href="#" ><img src="<?=base_url()?>img/logo.png" alt=""></a></h1>
+				<h1><a href="#" ><img src="img/logo.png" alt=""></a></h1>
 				<span class="text-logo">
-					INGRESA<br>
+					INGRESAs<br>
 					IMPRIME<br>
 					DISFRUTA<br>
 				</span>
@@ -80,21 +83,21 @@
 				   <a href="#">
 					    <div class="name-promo"><div class="title-promo">Profilaxis y Fluorización</div><div class="description-promo">Evaluación gratuita</div></div>
 						<div class="disc"><div class="ficha"><div class="porcentaje">50%</div><span class="calp">Calidad de Vida</span></div></div>
-						<img src="<?=base_url()?>tmp/big_img.jpg" alt="">
+						<img src="tmp/big_img.jpg" alt="">
 				   </a>
 				</div>
 				<div class="ui-item">
 				   <a href="#">
 					    <div class="name-promo"><div class="title-promo">Profilaxis y Fluorización</div><div class="description-promo">Evaluación gratuita</div></div>
 						<div class="disc"><div class="ficha"><div class="porcentaje">50%</div><span class="calp">Calidad de Vida</span></div></div>
-						<img src="<?=base_url()?>tmp/big_img.jpg" alt="">
+						<img src="tmp/big_img.jpg" alt="">
 				   </a>
 				</div>
 				<div class="ui-item">
 				   <a href="#">
 					    <div class="name-promo"><div class="title-promo">Profilaxis y Fluorización</div><div class="description-promo">Evaluación gratuita</div></div>
 						<div class="disc"><div class="ficha"><div class="porcentaje">50%</div><span class="calp">Calidad de Vida</span></div></div>
-						<img src="<?=base_url()?>tmp/big_img.jpg" alt="">
+						<img src="tmp/big_img.jpg" alt="">
 				   </a>
 				</div>
 			</div>
@@ -143,7 +146,7 @@
 				   	   	   	   	    <div class="new">¡NUEVOS!</div>
 				   	   	   	   </div>
 				   	   	   	   <figure>
-				   	   	   	   	<a href="#"><img src="<?=base_url()?>tmp/thumb_promo.jpg" alt=""></a>
+				   	   	   	   	<a href="<?=base_url()?>index.php/promocion"><img src="tmp/thumb_promo.jpg" alt=""></a>
 				   	   	   	   </figure>
 				   	   	   	   <div class="footer-promo">
 				   	   	   	        <div class="percent">
@@ -151,7 +154,7 @@
 					   	   	   	   	   <div class="min">Descto</div>
 				   	   	   	   	   </div>
 				   	   	   	   	   <div class="link-content"><a href="#" class="link"> Ver promociones</a></div>
-				   	   	   	   	   <a href="#" class="icon-empresa"><img src="<?=base_url()?>tmp/min_icon.jpg" alt=""></a>
+				   	   	   	   	   <a href="#" class="icon-empresa"><img src="tmp/min_icon.jpg" alt=""></a>
 				   	   	   	   </div>
 				   	   	   </div>
 				   	    </div>
@@ -163,7 +166,7 @@
 				   	   	   	   	    <div class="sub-title">Evaluación gratuita</div>
 				   	   	   	   </div>
 				   	   	   	   <figure>
-				   	   	   	   	<a href="#"><img src="<?=base_url()?>tmp/thumb_promo.jpg" alt=""></a>
+				   	   	   	   	<a href="<?=base_url()?>index.php/promocion"><img src="tmp/thumb_promo.jpg" alt=""></a>
 				   	   	   	   </figure>
 				   	   	   	   <div class="footer-promo">
 				   	   	   	        <div class="percent">
@@ -171,7 +174,7 @@
 					   	   	   	   	   <div class="min">Descto</div>
 				   	   	   	   	   </div>
 				   	   	   	   	   <div class="link-content"><a href="#" class="link"> Ver promociones</a></div>
-				   	   	   	   	   <a href="#" class="icon-empresa"><img src="<?=base_url()?>tmp/min_icon.jpg" alt=""></a>
+				   	   	   	   	   <a href="#" class="icon-empresa"><img src="tmp/min_icon.jpg" alt=""></a>
 				   	   	   	   </div>
 				   	   	   </div>
 				   	    </div>
@@ -183,7 +186,7 @@
 				   	   	   	   	    <div class="sub-title">Evaluación gratuita</div>
 				   	   	   	   </div>
 				   	   	   	   <figure>
-				   	   	   	   	<a href="#"><img src="<?=base_url()?>tmp/thumb_promo.jpg" alt=""></a>
+				   	   	   	   	<a href="<?=base_url()?>index.php/promocion"><img src="tmp/thumb_promo.jpg" alt=""></a>
 				   	   	   	   </figure>
 				   	   	   	   <div class="footer-promo">
 				   	   	   	        <div class="percent">
@@ -191,7 +194,7 @@
 					   	   	   	   	   <div class="min">Descto</div>
 				   	   	   	   	   </div>
 				   	   	   	   	   <div class="link-content"><a href="#" class="link"> Ver promociones</a></div>
-				   	   	   	   	   <a href="#" class="icon-empresa"><img src="<?=base_url()?>tmp/min_icon.jpg" alt=""></a>
+				   	   	   	   	   <a href="#" class="icon-empresa"><img src="tmp/min_icon.jpg" alt=""></a>
 				   	   	   	   </div>
 				   	   	   </div>
 				   	    </div>
@@ -206,7 +209,7 @@
 				   	   	   	   	    <div class="sub-title">Evaluación gratuita</div>
 				   	   	   	   </div>
 				   	   	   	   <figure>
-				   	   	   	   	<a href="#"><img src="<?=base_url()?>tmp/thumb_promo.jpg" alt=""></a>
+				   	   	   	   	<a href="<?=base_url()?>index.php/promocion"><img src="tmp/thumb_promo.jpg" alt=""></a>
 				   	   	   	   </figure>
 				   	   	   	   <div class="footer-promo">
 				   	   	   	        <div class="percent">
@@ -214,7 +217,7 @@
 					   	   	   	   	   <div class="min">Descto</div>
 				   	   	   	   	   </div>
 				   	   	   	   	   <div class="link-content"><a href="#" class="link"> Ver promociones</a></div>
-				   	   	   	   	   <a href="#" class="icon-empresa"><img src="<?=base_url()?>tmp/min_icon.jpg" alt=""></a>
+				   	   	   	   	   <a href="#" class="icon-empresa"><img src="tmp/min_icon.jpg" alt=""></a>
 				   	   	   	   </div>
 				   	   	   </div>
 				   	    </div>
@@ -226,7 +229,7 @@
 				   	   	   	   	    <div class="sub-title">Evaluación gratuita</div>
 				   	   	   	   </div>
 				   	   	   	   <figure>
-				   	   	   	   	<a href="#"><img src="<?=base_url()?>tmp/thumb_promo.jpg" alt=""></a>
+				   	   	   	   	<a href="<?=base_url()?>index.php/promocion"><img src="tmp/thumb_promo.jpg" alt=""></a>
 				   	   	   	   </figure>
 				   	   	   	   <div class="footer-promo">
 				   	   	   	        <div class="percent">
@@ -234,7 +237,7 @@
 					   	   	   	   	   <div class="min">Descto</div>
 				   	   	   	   	   </div>
 				   	   	   	   	   <div class="link-content"><a href="#" class="link"> Ver promociones</a></div>
-				   	   	   	   	   <a href="#" class="icon-empresa"><img src="<?=base_url()?>tmp/min_icon.jpg" alt=""></a>
+				   	   	   	   	   <a href="#" class="icon-empresa"><img src="tmp/min_icon.jpg" alt=""></a>
 				   	   	   	   </div>
 				   	   	   </div>
 				   	    </div>
@@ -246,7 +249,7 @@
 				   	   	   	   	    <div class="sub-title">Evaluación gratuita</div>
 				   	   	   	   </div>
 				   	   	   	   <figure>
-				   	   	   	   	<a href="#"><img src="<?=base_url()?>tmp/thumb_promo.jpg" alt=""></a>
+				   	   	   	   	<a href="<?=base_url()?>index.php/promocion"><img src="tmp/thumb_promo.jpg" alt=""></a>
 				   	   	   	   </figure>
 				   	   	   	   <div class="footer-promo">
 				   	   	   	        <div class="percent">
@@ -254,7 +257,7 @@
 					   	   	   	   	   <div class="min">Descto</div>
 				   	   	   	   	   </div>
 				   	   	   	   	   <div class="link-content"><a href="#" class="link"> Ver promociones</a></div>
-				   	   	   	   	   <a href="#" class="icon-empresa"><img src="<?=base_url()?>tmp/min_icon.jpg" alt=""></a>
+				   	   	   	   	   <a href="#" class="icon-empresa"><img src="tmp/min_icon.jpg" alt=""></a>
 				   	   	   	   </div>
 				   	   	   </div>
 				   	    </div>
@@ -262,11 +265,9 @@
 
 		   	   </div>
 
-		   	   <a href="#" class="btn-more" onclick="sn.more(this, event)" data-url="<?=base_url()?>tmp/promociones.json" data-target="#block-promos">VER MÁS</a>
+		   	   <a href="#" class="btn-more" onclick="sn.more(this, event)" data-url="tmp/promociones.json" data-target="#block-promos">VER MÁS</a>
 
-		   	   <div class="logo-footer">
-		   	   	   <a href="#"><img src="<?=base_url()?>img/logo_sunat.png" alt=""></a>
-		   	   </div>
+		   	 
 
 
 
@@ -276,7 +277,13 @@
 </div>
 
 <footer>
-	<div class="footer-inner">
+    <div class="content">
+        <div class="logo-footer">
+		   	 <a href="#"><img src="img/logo_sunat.png" alt=""></a>
+		</div>
+	</div>
+	<div class="footer-line">
+	     <div class="line-min-bottom"></div>
 	    <div class="content">
 		 	POR QUE SOMOS IMPORTANTES - SÉ PARTE DE CONTIGO SUNAT
 		</div>
