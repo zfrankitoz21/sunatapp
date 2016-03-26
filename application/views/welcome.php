@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
 	<meta charset="utf-8">
 	<title>SUNAT INTRANET</title>
-	<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/styles.css">
+	<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/style.css">
 </head>
 <body>
 
@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<table>
 		<tr><td>1. Cada item tiene 1 o más departamentos.</td></tr>
 		<tr><td>2. Cada item puede ser destacado.</td></tr>
-		<tr><td>1. Cada item pertenece a una empresa.</td></tr>
+		<tr><td>3. Cada item pertenece a una empresa.</td></tr>
 	</table>
 
 </body>
