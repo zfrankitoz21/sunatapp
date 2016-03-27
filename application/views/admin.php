@@ -16,6 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<li><a href="#">Administración de Destacadas</a></li>
 			<li><a href="#">Administración de Items</a></li>
 			<li><a href="#">Administración de Empresas</a></li>
+                        <li><a href="#">Administración de Promociones</a></li>
 		</ul>
 	</div>
 
