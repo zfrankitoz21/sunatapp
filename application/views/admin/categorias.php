@@ -21,6 +21,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<h2><a href="<?=base_url()?>">Visitar Sitio</a></h2>
 
+	<h2><a href="<?=current_url()?>/form">Añadir Categoría</a></h2>
+
 	<table cellspacing="14">
 		<thead>
 			<tr>
@@ -37,7 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<td><strong><?=$row->categoria?></strong></td>
 				<td><div style="background: <?=$row->color?>" width="30" height="30"><?=$row->color?></div></td>
 				<td><img width="30" height="30" src="<?=base_url()?>uploads/<?=$row->nombre?>"></td>
-				<td><a href="<?=current_url()?>/form/<?=$row->id?>">Editar</a> | <a href="">Eliminar</a></td>
+				<td><a href="<?=current_url()?>/form/<?=$row->id?>">Editar</a> | <a href="<?=current_url()?>/delete/<?=$row->id?>">Eliminar</a></td>
 			</tr>
 			<?php } ?>
 		</tbody>

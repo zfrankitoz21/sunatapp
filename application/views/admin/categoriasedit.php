@@ -22,18 +22,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<h2><a href="<?=base_url()?>">Visitar Sitio</a></h2>
 	<h3><a href="<?=base_url()?>index.php/categorias">Regresar a Categorías</a></h2>
 
-	<?php $data = $data[0]; ?>
+	<?php $data = @$data[0]; ?>
 	<hr>
 
-	<?php echo form_open_multipart('categorias/edit/' . $data->id);?>
-		Nombre : <input type="text" name="categoria" value="<?=$data->categoria?>"><br>
-		Color : <input type="text" name="color" value="<?=$data->color?>"><br>
-		Imagen : <input type="file" name="imgfile" size="20"><br>
-		<?php if ( $data->imagen ) { ?>
+	<?php if ( $data )
+		echo form_open_multipart('categorias/edit/' . $data->id);
+	else
+		echo form_open_multipart('categorias/add');
+	?>
+		Nombre : <input type="text" name="categoria" value="<?=@$data->categoria?>"><br>
+		Color : <input type="text" name="color" value="<?=@$data->color?>"><br>
+		Imagen : <input type="file" name="userfile" size="20"><br>
+		<?php if ( @$data->imagen ) { ?>
 			<input type="hidden" name="imagen" value="<?=$data->imagen?>">
 			<img width="30" height="30" src="<?=base_url()?>uploads/<?=$data->nombre?>"><br>
 		<?php } ?>
-		<input type="submit" value="Editar">
+		<input type="submit" value="<?=(@$data? 'Editar' : 'Crear')?>">
 
 </body>
 </html>
