@@ -22,30 +22,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</div>
 
 	<h2><a href="<?=base_url()?>">Visitar Sitio</a></h2>
+	<h3><a href="<?=base_url()?>index.php/empresas">Regresar a Empresas</a></h2>
 
-	<h2><a href="<?=current_url()?>/form">Añadir Categoría</a></h2>
+	<?php $data = @$data[0]; ?>
+	<hr>
 
-	<table cellspacing="14">
-		<thead>
-			<tr>
-				<th scope="col"><span>Categoría</span></th>
-				<th scope="col"><span>Color</span></th>
-				<th scope="col"><span>Imagen</span></th>
-				<th scope="col"><span>Opciones</span></th>
-			</tr>
-		</thead>
-
-		<tbody>
-			<?php foreach ( $data as $row ) { ?>
-			<tr>
-				<td><strong><?=$row->categoria?></strong></td>
-				<td><div style="background: <?=$row->color?>" width="30" height="30"><?=$row->color?></div></td>
-				<td><img width="30" height="30" src="<?=base_url()?>uploads/<?=$row->nombre?>"></td>
-				<td><a href="<?=current_url()?>/form/<?=$row->id?>">Editar</a> | <a href="<?=current_url()?>/delete/<?=$row->id?>">Eliminar</a></td>
-			</tr>
-			<?php } ?>
-		</tbody>
-	</table>
+	<?php if ( $data )
+		echo form_open_multipart('empresas/edit/' . $data->id);
+	else
+		echo form_open_multipart('empresas/add');
+	?>
+		Nombre : <input type="text" name="empresa" value="<?=@$data->empresa?>"><br>
+		Imagen : <input type="file" name="userfile" size="20"><br>
+		<?php if ( @$data->imagen ) { ?>
+			<input type="hidden" name="imagen" value="<?=$data->imagen?>">
+			<img width="30" height="30" src="<?=base_url()?>uploads/empresas/<?=$data->nombre?>"><br>
+		<?php } ?>
+		<input type="submit" value="<?=(@$data? 'Editar' : 'Crear')?>">
 
 </body>
 </html>

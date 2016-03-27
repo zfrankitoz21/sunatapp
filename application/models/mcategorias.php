@@ -11,13 +11,15 @@ class Mcategorias extends CI_Model
     public function categorias_entrys($id = false)
     {
         if ( $id === false ) {
-            $this->db->select('*');
-            $this->db->from('categorias');
+            $this->db->select('c.*, f.nombre');
+            $this->db->from('categorias c');
+            $this->db->join('files f', 'c.imagen = f.id', 'left');
         }
         else {
-            $this->db->select('*');
-            $this->db->from('categorias');
-            $this->db->where('id', $id);
+            $this->db->select('c.*, f.nombre');
+            $this->db->from('categorias c');
+            $this->db->join('files f', 'c.imagen = f.id', 'left');
+            $this->db->where('c.id', $id);
         }
         $query = $this->db->get();
         if ( $query->num_rows() > 0 )
@@ -85,21 +87,14 @@ class Mcategorias extends CI_Model
     }
     
     //insertamos un nuevo usuario en la tabla users
-    public function insert_user()
-    {
-        $data = array(
-            'username'       =>   'Juan68',
-            'fname'          =>   'Juan',
-            'lname'          =>   'Pérez',
-            'register_date'  =>    '2013-01-19 10:00:00'
-            );
-            $this->db->insert('users',$data);
+    public function categorias_create($data) {
+        $this->db->insert('categorias', $data);
     }
    
     //eliminamos al usuario con id = 1
-    public function delete_user()
+    public function categorias_delete($id)
     {
-        $this->db->delete('users', array('id' => 1));
+        $this->db->delete('categorias', array('id' => $id));
     }
 
     //actualizamos los datos del usuario con id = 3
