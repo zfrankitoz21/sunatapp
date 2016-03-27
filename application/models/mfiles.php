@@ -12,4 +12,13 @@ class Mfiles extends CI_Model
         return $this->db->insert_id();
     }
 
+    public function get_file($id) {
+        $query = $this->db->query("SELECT nombre FROM files WHERE id = $id");
+
+        if ($query->num_rows() > 0)
+           return $query->row(0);
+        else
+            return 0;
+    }
+
 }

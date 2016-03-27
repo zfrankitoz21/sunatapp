@@ -11,13 +11,15 @@ class Mcategorias extends CI_Model
     public function categorias_entrys($id = false)
     {
         if ( $id === false ) {
-            $this->db->select('*');
-            $this->db->from('categorias');
+            $this->db->select('c.*, f.nombre');
+            $this->db->from('categorias c');
+            $this->db->join('files f', 'c.imagen = f.id', 'left');
         }
         else {
-            $this->db->select('*');
-            $this->db->from('categorias');
-            $this->db->where('id', $id);
+            $this->db->select('c.*, f.nombre');
+            $this->db->from('categorias c');
+            $this->db->join('files f', 'c.imagen = f.id', 'left');
+            $this->db->where('c.id', $id);
         }
         $query = $this->db->get();
         if ( $query->num_rows() > 0 )

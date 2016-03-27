@@ -6,8 +6,9 @@ class Categorias extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->database('default');
-        $this->load->helper(array('form', 'url'));
+        $this->load->helper(array('form'));
         $this->load->model('mcategorias');
+		$this->load->model('mfiles');
     }
 
 	public function index() {
@@ -33,19 +34,23 @@ class Categorias extends CI_Controller {
 		$config['max_height']  = '768';
 
 		$this->load->library('upload', $config);
-		$this->upload->do_upload();
-		$dataimg = $this->upload->data();
+		
+		if ( $this->upload->do_upload() ) {
+			$dataimg = $this->upload->data();
+			$imagenid = $this->mfiles->insert_file( array('nombre' => $dataimg['file_name'], 'fecha' => strtotime("now")) );
+		}
+		else {
+			$imagenid = $this->input->post('imagen'); 
+		}
+		
 		$data['data'] = $this->mcategorias->categorias_entrys();
-
-		$dataimg = array('nombre' => $dataimg['file_name'], 'fecha' => strtotime("now"));
-
 		$formdata = array (
 			'id' => $id,
 			'categoria' => $this->input->post('categoria'),
 			'color' => $this->input->post('color'),
-			'imagen' => $this->mfiles->insert_file($dataimg)
+			'imagen' => $imagenid
 		);
 		$this->mcategorias->categorias_update($formdata);
-		//$this->load->view('admin/categorias', $data);
+		redirect('categorias');
 	}
 }

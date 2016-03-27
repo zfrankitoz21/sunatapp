@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<h2><a href="<?=base_url()?>">Visitar Sitio</a></h2>
 
-	<table>
+	<table cellspacing="14">
 		<thead>
 			<tr>
 				<th scope="col"><span>Categoría</span></th>
@@ -35,8 +35,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<?php foreach ( $data as $row ) { ?>
 			<tr>
 				<td><strong><?=$row->categoria?></strong></td>
-				<td><?=$row->color?></td>
-				<td><?=$row->imagen?></td>
+				<td><div style="background: <?=$row->color?>" width="30" height="30"><?=$row->color?></div></td>
+				<td><img width="30" height="30" src="<?=base_url()?>uploads/<?=$row->nombre?>"></td>
 				<td><a href="<?=current_url()?>/form/<?=$row->id?>">Editar</a> | <a href="">Eliminar</a></td>
 			</tr>
 			<?php } ?>
