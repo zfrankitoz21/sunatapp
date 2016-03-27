@@ -73,6 +73,7 @@ class Promocion extends CI_Controller {
 
         public function ajax_add()
         {
+            $this->_validate();
             $data = array(
                     'titulo' => $this->input->post('titulo'),
                     'empresa' => $this->input->post('empresa'),
@@ -89,6 +90,7 @@ class Promocion extends CI_Controller {
 
         public function ajax_update()
         {
+            $this->_validate();
             $data = array(
                     'titulo' => $this->input->post('titulo'),
                     'empresa' => $this->input->post('empresa'),
@@ -107,6 +109,90 @@ class Promocion extends CI_Controller {
         {
             $this->promocion->delete_by_id($id);
             echo json_encode(array("status" => TRUE));
+        }
+        
+        private function _validate()
+        {
+            $data = array();
+            $data['error_string'] = array();
+            $data['inputerror'] = array();
+            $data['status'] = TRUE;
+
+            if($this->input->post('titulo') == '')
+            {
+                $data['inputerror'][] = 'titulo';
+                $data['error_string'][] = "El campo 'Título' es obligatorio.";
+                $data['status'] = FALSE;
+            }
+
+            if($this->input->post('empresa') == '')
+            {
+                $data['inputerror'][] = 'empresa';
+                $data['error_string'][] = "El campo 'Empresa' es obligatorio.";
+                $data['status'] = FALSE;
+            }
+
+            if($this->input->post('desc_empresa') == '')
+            {
+                $data['inputerror'][] = 'desc_empresa';
+                $data['error_string'][] = "El campo 'Desc. Empresa' es obligatorio.";
+                $data['status'] = FALSE;
+            }
+
+            if($this->input->post('direccion') == '')
+            {
+                $data['inputerror'][] = 'direccion';
+                $data['error_string'][] = "El campo 'Dirección' es obligatorio.";
+                $data['status'] = FALSE;
+            }
+            
+            if($this->input->post('telefono') == '')
+            {
+                $data['inputerror'][] = 'telefono';
+                $data['error_string'][] = "El campo 'Teléfono' es obligatorio.";
+                $data['status'] = FALSE;
+            } else {
+                if(!is_numeric($this->input->post('telefono')))
+                {
+                    $data['inputerror'][] = 'telefono';
+                    $data['error_string'][] = "El campo 'Teléfono' debe ser entero.";
+                    $data['status'] = FALSE;
+                }
+            }
+
+            if($this->input->post('desc_descuento') == '')
+            {
+                $data['inputerror'][] = 'desc_descuento';
+                $data['error_string'][] = "El campo 'Desc. Descuento' es obligatorio.";
+                $data['status'] = FALSE;
+            }
+            
+            if($this->input->post('desc_restriccion') == '')
+            {
+                $data['inputerror'][] = 'desc_restriccion';
+                $data['error_string'][] = "El campo 'Desc. Restricción' es obligatorio.";
+                $data['status'] = FALSE;
+            }
+
+            if($this->input->post('imagen') == '')
+            {
+                $data['inputerror'][] = 'imagen';
+                $data['error_string'][] = "El campo 'Imagen' es obligatorio.";
+                $data['status'] = FALSE;
+            } else {
+                if(!is_numeric($this->input->post('imagen')))
+                {
+                    $data['inputerror'][] = 'imagen';
+                    $data['error_string'][] = "El campo 'Imagen' debe ser entero.";
+                    $data['status'] = FALSE;
+                }
+            }
+            
+            if($data['status'] === FALSE)
+            {
+                echo json_encode($data);
+                exit();
+            }
         }
         
 }
