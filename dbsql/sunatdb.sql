@@ -68,3 +68,33 @@ ALTER TABLE `categorias`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+--
+-- Estructura de tabla para la tabla `tbl_promociones`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_promociones` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(150) NOT NULL,
+  `empresa` varchar(150) NOT NULL,
+  `desc_empresa` varchar(256) NOT NULL,
+  `direccion` varchar(256) NOT NULL,
+  `telefono` int(11) NOT NULL,
+  `desc_descuento` varchar(256) NOT NULL,
+  `desc_restriccion` varchar(256) NOT NULL,
+  `imagen` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+--
+-- Volcado de datos para la tabla `tbl_promociones`
+--
+
+INSERT INTO `tbl_promociones` (`id`, `titulo`, `empresa`, `desc_empresa`, `direccion`, `telefono`, `desc_descuento`, `desc_restriccion`, `imagen`) VALUES
+(1, 'Título 1', 'Empresa 1', 'Desc Empresa 1', 'Direccion 1', 1234567, 'Desc Descuento 1', 'Desc Restriccion 1', 9999998),
+(2, 'Titulo 2', 'Empresa 2', 'Desc Empresa 2', 'Direccion 2', 1234567, 'Desc Descuento 2', 'Desc Restriccion 2', 2),
+(3, 'Titulo 3', 'Empresa 3', 'Desc Empresa 3', 'Direccion 3', 1234567, 'Desc Descuento 3', 'Desc Restriccion 3', 3),
+(4, 'Titulo 4', 'Empresa 4 ', 'Desc Empresa 4', 'Direccion 4', 1234567, 'Desc Descuento 4', 'Desc Restriccion 4', 4),
+(5, 'Título 5', 'Empresa 5', 'Desc Empresa 5', 'Direccion 5', 278788, 'Desc Descuento 5', 'Desc Restriccion 5', 5);
+
