@@ -49,7 +49,7 @@ class MPromocion extends Model {
         $this->db->update($this->tbl_promociones, $promocion);
     }
     
-    // delete person by id
+    // delete promocion by id
     function delete($id){
         $this->db->where('id', $id);
         $this->db->delete($this->tbl_promociones);
