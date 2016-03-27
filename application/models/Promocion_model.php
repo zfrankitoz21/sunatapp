@@ -85,7 +85,7 @@ class Promocion_model extends CI_Model {
     }
     
     // delete promocion by id
-    function delete($id){
+    function delete_by_id($id){
         $this->db->where('id', $id);
         $this->db->delete($this->table);
     }

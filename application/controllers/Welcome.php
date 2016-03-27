@@ -20,6 +20,10 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
+<<<<<<< HEAD
 		$this->load->view('index');
+=======
+		$this->load->view('promocion_view');
+>>>>>>> upstream/master
 	}
 }
