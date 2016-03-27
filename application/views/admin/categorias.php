@@ -12,14 +12,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div id="container">
 		<h1>Bienvenidos al administrador de contenido SUNAT</h1>
 		<ul>
-			<li><a href="<?=current_url()?>/categorias">Administración de Categorías</a></li>
+			<li><a href="<?=base_url()?>index.php/categorias">Administración de Categorías</a></li>
 			<li><a href="#">Administración de Destacadas</a></li>
 			<li><a href="#">Administración de Items</a></li>
 			<li><a href="#">Administración de Empresas</a></li>
-                        <li><a href="#">Prueba</a></li>
-                        <li><a href="#">Prueba2</a></li>
-                        <li><a href="#">Prueba3</a></li>
-                        <li><a href="#">Prueba4</a></li>
 		</ul>
 	</div>
 
@@ -41,7 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<td><strong><?=$row->categoria?></strong></td>
 				<td><?=$row->color?></td>
 				<td><?=$row->imagen?></td>
-				<td><a href="<?=current_url()?>/<?=$row->id?>">Editar</a> | <a href="">Eliminar</a></td>
+				<td><a href="<?=current_url()?>/form/<?=$row->id?>">Editar</a> | <a href="">Eliminar</a></td>
 			</tr>
 			<?php } ?>
 		</tbody>

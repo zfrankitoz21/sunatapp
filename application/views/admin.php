@@ -12,11 +12,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div id="container">
 		<h1>Bienvenidos al administrador de contenido SUNAT</h1>
 		<ul>
-			<li><a href="<?=current_url()?>/categorias">Administración de Categorías</a></li>
+			<li><a href="<?=base_url()?>index.php/categorias">Administración de Categorías</a></li>
+			<li><a href="#">Administración de Empresas</a></li>
 			<li><a href="#">Administración de Destacadas</a></li>
 			<li><a href="#">Administración de Items</a></li>
 			<li><a href="#">Administración de Empresas</a></li>
-                        <li><a href="#">Administración de Promociones</a></li>
+			<li><a href="#">Administración de Promociones</a></li>
 		</ul>
 	</div>
 
