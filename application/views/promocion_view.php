@@ -94,7 +94,7 @@
             save_method = 'add';
             $('#form')[0].reset(); // reset form on modals
             $('#modal_form').modal('show'); // show bootstrap modal
-            $('.modal-title').text('Add Promocion'); // Set Title to Bootstrap modal title
+            $('.modal-title').text('Nueva Promoción'); // Set Title to Bootstrap modal title
         }
 
         function edit_promocion(id)
@@ -111,6 +111,7 @@
                 {
 
                     $('[name="id"]').val(data.id);
+                    $('[name="titulo"]').val(data.titulo);
                     $('[name="empresa"]').val(data.empresa);
                     $('[name="desc_empresa"]').val(data.desc_empresa);
                     $('[name="direccion"]').val(data.direccion);
@@ -120,7 +121,7 @@
                     $('[name="imagen"]').val(data.imagen);
 
                     $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
-                    $('.modal-title').text('Edit Promocion'); // Set title to Bootstrap modal title
+                    $('.modal-title').text('Editar Promoción'); // Set title to Bootstrap modal title
 
                 },
                 error: function (jqXHR, textStatus, errorThrown)
@@ -207,6 +208,13 @@
                         <div class="form-body">
                             
                             <div class="form-group">
+                                <label class="control-label col-md-3">Título</label>
+                                <div class="col-md-9">
+                                    <input name="titulo" placeholder="Título" class="form-control" type="text">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
                                 <label class="control-label col-md-3">Empresa</label>
                                 <div class="col-md-9">
                                     <input name="empresa" placeholder="Empresa" class="form-control" type="text">
@@ -214,16 +222,16 @@
                             </div>
                             
                             <div class="form-group">
-                                <label class="control-label col-md-3">Desc Empresa</label>
+                                <label class="control-label col-md-3">Desc. Empresa</label>
                                 <div class="col-md-9">
-                                    <input name="desc_empresa" placeholder="Desc Empresa" class="form-control" type="text">
+                                    <textarea name="desc_empresa" placeholder="Descripción Empresa" class="form-control" ></textarea>
                                 </div>
                             </div>
                             
                             <div class="form-group">
                                 <label class="control-label col-md-3">Dirección</label>
                                 <div class="col-md-9">
-                                    <input name="direccion" placeholder="Direccion" class="form-control" type="text">
+                                    <textarea name="direccion" placeholder="Dirección" class="form-control" ></textarea>
                                 </div>
                             </div>
                             
@@ -240,23 +248,23 @@
                             -->
                             
                             <div class="form-group">
-                                <label class="control-label col-md-3">Teléfono</label>
+                                <label class="control-label col-md-2">Teléfono</label>
                                 <div class="col-md-9">
-                                    <textarea name="telefono" placeholder="Telefono"class="form-control"></textarea>
+                                    <input name="telefono" placeholder="Teléfono"class="form-control" type="text">
                                 </div>
                             </div>
                             
                             <div class="form-group">
                                 <label class="control-label col-md-3">Desc. Descuento</label>
                                 <div class="col-md-9">
-                                    <textarea name="desc_descuento" placeholder="Desc Descuento"class="form-control"></textarea>
+                                    <textarea name="desc_descuento" placeholder="Descripción Descuento"class="form-control"></textarea>
                                 </div>
                             </div>
                             
                             <div class="form-group">
-                                <label class="control-label col-md-3">Desc Restricción</label>
+                                <label class="control-label col-md-3">Desc. Restricción</label>
                                 <div class="col-md-9">
-                                    <input name="desc_restriccion" placeholder="Desc Restriccion" class="form-control" type="text">
+                                    <textarea name="desc_restriccion" placeholder="Descripción Restricción" class="form-control"></textarea>
                                 </div>
                             </div>
                             
