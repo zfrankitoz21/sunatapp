@@ -173,7 +173,7 @@
             {
                 url = "<?php echo site_url('promocion/ajax_update')?>";
             }
-
+            console.log($('#form'));
             // ajax adding data to database
             $.ajax({
                 url : url,
@@ -182,6 +182,8 @@
                 dataType: "JSON",
                 success: function(data)
                 {
+                    console.log(data.imagen);
+                    
                     if(data.status) //if success close modal and reload ajax table
                     {
                         $('#modal_form').modal('hide');
@@ -199,7 +201,9 @@
                     $('#btnSave').attr('disabled',false); //set button enable
                 },
                 error: function (jqXHR, textStatus, errorThrown)
-                {
+                {       
+                    //console.log(data.imagen);
+                    
                     alert('Error adding / update data');
                     $('#btnSave').text('Guardar'); //change button text
                     $('#btnSave').attr('disabled',false); //set button enable
@@ -243,7 +247,7 @@
                 </div>
                 
                 <div class="modal-body form">
-                    <form action="#" id="form" class="form-horizontal">
+                    <form action="#" id="form" class="form-horizontal"  enctype="multipart/form-data">
                         <input type="hidden" value="" name="id"/>
                         <div class="form-body">
                             
@@ -279,20 +283,8 @@
                                 </div>
                             </div>
                             
-                            <!--
                             <div class="form-group">
-                                <label class="control-label col-md-3">Gender</label>
-                                <div class="col-md-9">
-                                    <select name="gender" class="form-control">
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                    </select>
-                                </div>
-                            </div>
-                            -->
-                            
-                            <div class="form-group">
-                                <label class="control-label col-md-2">Teléfono</label>
+                                <label class="control-label col-md-3">Teléfono</label>
                                 <div class="col-md-9">
                                     <input name="telefono" placeholder="Teléfono"class="form-control" type="text">
                                     <span class="help-block"></span>
@@ -318,19 +310,13 @@
                             <div class="form-group">
                                 <label class="control-label col-md-3">Imagen</label>
                                 <div class="col-md-9">
-                                    <input name="imagen" placeholder="Imagen" class="form-control" type="text">
-                                    <span class="help-block"></span>
+                                    <!--<input name="imagen" placeholder="Imagen" class="form-control" type="text">
+                                    <span class="help-block"></span>-->
+                                    <!--<label class="control-label">Select File</label>-->
+                                    <input type="file" name="filename" size="20" type="file" class="file" data-show-preview="false">
                                 </div>
                             </div>
                             
-                            <!--
-                            <div class="form-group">
-                                <label class="control-label col-md-3">Date of Birth</label>
-                                <div class="col-md-9">
-                                    <input name="dob" placeholder="yyyy-mm-dd" class="form-control" type="text">
-                                </div>
-                            </div>
-                            -->
                             
                         </div>
                     </form>

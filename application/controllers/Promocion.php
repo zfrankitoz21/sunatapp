@@ -23,6 +23,9 @@ class Promocion extends CI_Controller {
         {
             parent::__construct();
             $this->load->model('promocion_model','promocion');
+            $this->load->model('mfiles');
+            
+            $this->load->helper(array('form', 'url'));
         }
 
         public function index()
@@ -73,6 +76,47 @@ class Promocion extends CI_Controller {
 
         public function ajax_add()
         {
+            //set preferences
+            $config['upload_path'] = './uploads/promociones';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size']	= '100';
+            $config['max_width']  = '1024';
+            $config['max_height']  = '768';
+
+            //load upload class library
+            $this->load->library('upload', $config); 
+            /*
+            if ( $this->upload->do_upload() ) {
+                    $dataimg = $this->upload->data();
+                    $imagenid = $this->mfiles->insert_file( array('nombre' => $dataimg['file_name'], 'fecha' => strtotime("now")) );  
+            }
+            else {
+                    $imagenid = $this->input->post('imagen'); 
+                    var_dump($imagenid);
+            }*/
+            /*
+            if (!$this->upload->do_upload('filename'))
+            {
+                // case - failure
+                $upload_error = array('error' => $this->upload->display_errors());
+                $this->load->view('promocion_view', $upload_error);
+            }
+            
+            else
+            {
+                // case - success
+                $upload_data = $this->upload->data();
+                $data['success_msg'] = '<div class="alert alert-success text-center">Your file <strong>' . $upload_data['file_name'] . '</strong> was successfully uploaded!</div>';
+                $this->load->view('upload_file_view', $data);
+            }*/
+            
+            if (!$this->upload->do_upload('filename')){
+                $upload_data = $this->upload->data();
+                //$imagenid = $this->mfiles->insert_file( array('nombre' => $dataimg['file_name'], 
+                //                                        'fecha' => strtotime("now")) );  
+            }
+            
+            /*
             $this->_validate();
             $data = array(
                     'titulo' => $this->input->post('titulo'),
@@ -84,8 +128,10 @@ class Promocion extends CI_Controller {
                     'desc_restriccion' => $this->input->post('desc_restriccion'),
                     'imagen' => $this->input->post('imagen')
                 );
-            $insert = $this->promocion->save($data);
-            echo json_encode(array("status" => TRUE));
+            $insert = $this->promocion->save($data); */
+            //echo json_encode(array("status" => TRUE));
+            $titulo =   $upload_data['file_name'];
+            echo json_encode(array("status" => TRUE, "imagen" => $titulo));
         }
 
         public function ajax_update()
@@ -99,7 +145,7 @@ class Promocion extends CI_Controller {
                     'telefono' => $this->input->post('telefono'),
                     'desc_descuento' => $this->input->post('desc_descuento'),
                     'desc_restriccion' => $this->input->post('desc_restriccion'),
-                    'imagen' => $this->input->post('imagen')
+                    'imagen' =>  $this->input->post('imagen')
                 );
             $this->promocion->update(array('id' => $this->input->post('id')), $data);
             echo json_encode(array("status" => TRUE));
@@ -174,6 +220,7 @@ class Promocion extends CI_Controller {
                 $data['status'] = FALSE;
             }
 
+            /*
             if($this->input->post('imagen') == '')
             {
                 $data['inputerror'][] = 'imagen';
@@ -187,6 +234,7 @@ class Promocion extends CI_Controller {
                     $data['status'] = FALSE;
                 }
             }
+            */
             
             if($data['status'] === FALSE)
             {
