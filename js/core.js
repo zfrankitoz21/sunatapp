@@ -58,10 +58,11 @@ var sn ={}
       $('.ui-list li:not(.ui-divider) > a',$element).on('click.libui',function(e){
         e.preventDefault();
         var $el = $(this),ps;
-        if (!$el.parent().is('.ui-disabled')) $el.closest('.ui-dropdown').find('.ui-caption span').html( $el.html());
+        if (!$el.parent().is('.ui-disabled')) { $el.closest('.ui-dropdown').find('.ui-caption span').html( $el.html()); }
         $element.children('.ui-caption').trigger('click.libui');
         $('input[type=hidden]',$element).val($el.data('value'));
         if (ps = $element.data('panels')){ $('#'+ps).children('div').hide().filter($el.attr('href')).show()};
+        $( "#provincias" ).submit();
       });
     }
   }

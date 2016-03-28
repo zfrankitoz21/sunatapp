@@ -3,10 +3,15 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Sunat - Intranet</title>
-	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="<?=base_url()?>css/styles.css">
 	<!--[if lt IE 9]>
-		<script type="text/javascript" src="js/modernizr.js"></script>
+		<script type="text/javascript" src="<?=base_url()?>js/modernizr.js"></script>
    <![endif]-->
+
+   <script>
+
+   </script>
+
 </head>
 <body>
 <header>
@@ -14,7 +19,7 @@
 	    <div class="line-top"><div class="line-min-top"></div></div>
 		<div class="content header-main">
 			<div class="logo">
-				<h1><a href="#" ><img src="img/logo.png" alt=""></a></h1>
+				<h1><a href="#" ><img src="<?=base_url()?>img/logo.png" alt=""></a></h1>
 				<span class="text-logo">
 					INGRESAs<br>
 					IMPRIME<br>
@@ -45,17 +50,17 @@
 					</div>
 
 					 <div class="zonal-option">
-				    	<form method="POST" action="/cartelera/buscar">
+				    	<form id="provincias" method="post" action="">
 				    	    <div class="title-zonal">Selecciona tu provincia</div>
 		                    <div class="ui-dropdown" onclick="sn.dropdown(this, event)">
 		                        <input type="hidden" name="pid">
 		                        <div class="ui-caption">
-		                            <span>LIMA <b class="btext">¡NUEVO!</b></span>
+		                            <span><?=(@$_POST['pid'])?> <b class="btext">¡NUEVO!</b></span>
 		                        </div>
 		                        <ul class="ui-list">
-		                            <li><a data-value="1312" href="#">LIMA <b class="btext">¡NUEVO!</b></a></li>
-		                            <li><a data-value="1313" href="#">HUANCAYO</a></li>
-		                            <li><a data-value="1314" href="#">CUZCO</a></li>
+		                            <li><a data-value="Lima" href="#">LIMA <b class="btext">¡NUEVO!</b></a></li>
+		                            <li><a data-value="Huancayo" href="#">HUANCAYO</a></li>
+		                            <li><a data-value="Cuzco" href="#">CUZCO</a></li>
 		                        </ul>
 		                    </div>
 		                </form>
@@ -83,21 +88,21 @@
 				   <a href="#">
 					    <div class="name-promo"><div class="title-promo">Profilaxis y Fluorización</div><div class="description-promo">Evaluación gratuita</div></div>
 						<div class="disc"><div class="ficha"><div class="porcentaje">50%</div><span class="calp">Calidad de Vida</span></div></div>
-						<img src="tmp/big_img.jpg" alt="">
+						<img src="<?=base_url()?>tmp/big_img.jpg" alt="">
 				   </a>
 				</div>
 				<div class="ui-item">
 				   <a href="#">
 					    <div class="name-promo"><div class="title-promo">Profilaxis y Fluorización</div><div class="description-promo">Evaluación gratuita</div></div>
 						<div class="disc"><div class="ficha"><div class="porcentaje">50%</div><span class="calp">Calidad de Vida</span></div></div>
-						<img src="tmp/big_img.jpg" alt="">
+						<img src="<?=base_url()?>tmp/big_img.jpg" alt="">
 				   </a>
 				</div>
 				<div class="ui-item">
 				   <a href="#">
 					    <div class="name-promo"><div class="title-promo">Profilaxis y Fluorización</div><div class="description-promo">Evaluación gratuita</div></div>
 						<div class="disc"><div class="ficha"><div class="porcentaje">50%</div><span class="calp">Calidad de Vida</span></div></div>
-						<img src="tmp/big_img.jpg" alt="">
+						<img src="<?=base_url()?>tmp/big_img.jpg" alt="">
 				   </a>
 				</div>
 			</div>
@@ -110,7 +115,7 @@
 	    <div class="content-categories">
 	       <ul class="list-categories">
 		        <li class="item-category cat-entretenimiento">
-		       	  <a href="#"><i class="entretenimiento"></i> Entretenimiento</a>
+		       	  <a style="color: #0063a7;" href="<?=base_url()?>index.php/welcome/entretenimiento"><i class="entretenimiento"></i> Entretenimiento</a>
 		        </li>
 		        <li class="item-category cat-belleza">
 		       	  <a href="#"><i class="belleza"></i> Belleza y Salud</a>
@@ -146,7 +151,7 @@
 				   	   	   	   	    <div class="new">¡NUEVOS!</div>
 				   	   	   	   </div>
 				   	   	   	   <figure>
-				   	   	   	   	<a href="<?=base_url()?>index.php/promocion"><img src="tmp/thumb_promo.jpg" alt=""></a>
+				   	   	   	   	<a href="<?=base_url()?>index.php/promocion"><img src="<?=base_url()?>tmp/thumb_promo.jpg" alt=""></a>
 				   	   	   	   </figure>
 				   	   	   	   <div class="footer-promo">
 				   	   	   	        <div class="percent">
@@ -154,7 +159,7 @@
 					   	   	   	   	   <div class="min">Descto</div>
 				   	   	   	   	   </div>
 				   	   	   	   	   <div class="link-content"><a href="#" class="link"> Ver promociones</a></div>
-				   	   	   	   	   <a href="#" class="icon-empresa"><img src="tmp/min_icon.jpg" alt=""></a>
+				   	   	   	   	   <a href="#" class="icon-empresa"><img src="<?=base_url()?>tmp/min_icon.jpg" alt=""></a>
 				   	   	   	   </div>
 				   	   	   </div>
 				   	    </div>
@@ -166,7 +171,7 @@
 				   	   	   	   	    <div class="sub-title">Evaluación gratuita</div>
 				   	   	   	   </div>
 				   	   	   	   <figure>
-				   	   	   	   	<a href="<?=base_url()?>index.php/promocion"><img src="tmp/thumb_promo.jpg" alt=""></a>
+				   	   	   	   	<a href="<?=base_url()?>index.php/promocion"><img src="<?=base_url()?>tmp/thumb_promo.jpg" alt=""></a>
 				   	   	   	   </figure>
 				   	   	   	   <div class="footer-promo">
 				   	   	   	        <div class="percent">
@@ -174,7 +179,7 @@
 					   	   	   	   	   <div class="min">Descto</div>
 				   	   	   	   	   </div>
 				   	   	   	   	   <div class="link-content"><a href="#" class="link"> Ver promociones</a></div>
-				   	   	   	   	   <a href="#" class="icon-empresa"><img src="tmp/min_icon.jpg" alt=""></a>
+				   	   	   	   	   <a href="#" class="icon-empresa"><img src="<?=base_url()?>tmp/min_icon.jpg" alt=""></a>
 				   	   	   	   </div>
 				   	   	   </div>
 				   	    </div>
@@ -186,7 +191,7 @@
 				   	   	   	   	    <div class="sub-title">Evaluación gratuita</div>
 				   	   	   	   </div>
 				   	   	   	   <figure>
-				   	   	   	   	<a href="<?=base_url()?>index.php/promocion"><img src="tmp/thumb_promo.jpg" alt=""></a>
+				   	   	   	   	<a href="<?=base_url()?>index.php/promocion"><img src="<?=base_url()?>tmp/thumb_promo.jpg" alt=""></a>
 				   	   	   	   </figure>
 				   	   	   	   <div class="footer-promo">
 				   	   	   	        <div class="percent">
@@ -194,7 +199,7 @@
 					   	   	   	   	   <div class="min">Descto</div>
 				   	   	   	   	   </div>
 				   	   	   	   	   <div class="link-content"><a href="#" class="link"> Ver promociones</a></div>
-				   	   	   	   	   <a href="#" class="icon-empresa"><img src="tmp/min_icon.jpg" alt=""></a>
+				   	   	   	   	   <a href="#" class="icon-empresa"><img src="<?=base_url()?>tmp/min_icon.jpg" alt=""></a>
 				   	   	   	   </div>
 				   	   	   </div>
 				   	    </div>
@@ -209,7 +214,7 @@
 				   	   	   	   	    <div class="sub-title">Evaluación gratuita</div>
 				   	   	   	   </div>
 				   	   	   	   <figure>
-				   	   	   	   	<a href="<?=base_url()?>index.php/promocion"><img src="tmp/thumb_promo.jpg" alt=""></a>
+				   	   	   	   	<a href="<?=base_url()?>index.php/promocion"><img src="<?=base_url()?>tmp/thumb_promo.jpg" alt=""></a>
 				   	   	   	   </figure>
 				   	   	   	   <div class="footer-promo">
 				   	   	   	        <div class="percent">
@@ -217,7 +222,7 @@
 					   	   	   	   	   <div class="min">Descto</div>
 				   	   	   	   	   </div>
 				   	   	   	   	   <div class="link-content"><a href="#" class="link"> Ver promociones</a></div>
-				   	   	   	   	   <a href="#" class="icon-empresa"><img src="tmp/min_icon.jpg" alt=""></a>
+				   	   	   	   	   <a href="#" class="icon-empresa"><img src="<?=base_url()?>tmp/min_icon.jpg" alt=""></a>
 				   	   	   	   </div>
 				   	   	   </div>
 				   	    </div>
@@ -229,7 +234,7 @@
 				   	   	   	   	    <div class="sub-title">Evaluación gratuita</div>
 				   	   	   	   </div>
 				   	   	   	   <figure>
-				   	   	   	   	<a href="<?=base_url()?>index.php/promocion"><img src="tmp/thumb_promo.jpg" alt=""></a>
+				   	   	   	   	<a href="<?=base_url()?>index.php/promocion"><img src="<?=base_url()?>tmp/thumb_promo.jpg" alt=""></a>
 				   	   	   	   </figure>
 				   	   	   	   <div class="footer-promo">
 				   	   	   	        <div class="percent">
@@ -237,7 +242,7 @@
 					   	   	   	   	   <div class="min">Descto</div>
 				   	   	   	   	   </div>
 				   	   	   	   	   <div class="link-content"><a href="#" class="link"> Ver promociones</a></div>
-				   	   	   	   	   <a href="#" class="icon-empresa"><img src="tmp/min_icon.jpg" alt=""></a>
+				   	   	   	   	   <a href="#" class="icon-empresa"><img src="<?=base_url()?>tmp/min_icon.jpg" alt=""></a>
 				   	   	   	   </div>
 				   	   	   </div>
 				   	    </div>
@@ -249,7 +254,7 @@
 				   	   	   	   	    <div class="sub-title">Evaluación gratuita</div>
 				   	   	   	   </div>
 				   	   	   	   <figure>
-				   	   	   	   	<a href="<?=base_url()?>index.php/promocion"><img src="tmp/thumb_promo.jpg" alt=""></a>
+				   	   	   	   	<a href="<?=base_url()?>index.php/promocion"><img src="<?=base_url()?>tmp/thumb_promo.jpg" alt=""></a>
 				   	   	   	   </figure>
 				   	   	   	   <div class="footer-promo">
 				   	   	   	        <div class="percent">
@@ -257,7 +262,7 @@
 					   	   	   	   	   <div class="min">Descto</div>
 				   	   	   	   	   </div>
 				   	   	   	   	   <div class="link-content"><a href="#" class="link"> Ver promociones</a></div>
-				   	   	   	   	   <a href="#" class="icon-empresa"><img src="tmp/min_icon.jpg" alt=""></a>
+				   	   	   	   	   <a href="#" class="icon-empresa"><img src="<?=base_url()?>tmp/min_icon.jpg" alt=""></a>
 				   	   	   	   </div>
 				   	   	   </div>
 				   	    </div>
@@ -265,7 +270,7 @@
 
 		   	   </div>
 
-		   	   <a href="#" class="btn-more" onclick="sn.more(this, event)" data-url="tmp/promociones.json" data-target="#block-promos">VER MÁS</a>
+		   	   <a href="#" class="btn-more" onclick="sn.more(this, event)" data-url="<?=base_url()?>tmp/promociones.json" data-target="#block-promos">VER MÁS</a>
 
 		   	 
 
@@ -279,7 +284,7 @@
 <footer>
     <div class="content">
         <div class="logo-footer">
-		   	 <a href="#"><img src="img/logo_sunat.png" alt=""></a>
+		   	 <a href="#"><img src="<?=base_url()?>img/logo_sunat.png" alt=""></a>
 		</div>
 	</div>
 	<div class="footer-line">
@@ -290,7 +295,7 @@
 	</div>
 </footer>
 
-<script src="js/jquery.js" type="text/javascript"></script>	
-<script src="js/core.js" type="text/javascript"></script>
+<script src="<?=base_url()?>js/jquery.js" type="text/javascript"></script>	
+<script src="<?=base_url()?>js/core.js" type="text/javascript"></script>
 </body>
 </html>
