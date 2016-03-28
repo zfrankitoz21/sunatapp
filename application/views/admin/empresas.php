@@ -21,7 +21,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<li><a href="<?=base_url()?>index.php/categorias"><i class="fa fa-clone"></i> Administración de Categorías</a></li>
 				<li><a class="active" href="<?=base_url()?>index.php/empresas"><i class="fa fa-suitcase"></i> Administración de Empresas</a></li>
 				<li><a href="#"><i class="fa fa-star"></i> Administración de Destacadas</a></li>
+<<<<<<< HEAD
 				<li><a href="<?=base_url()?>/index.php/promocion"><i class="fa fa-ticket"></i> Administración de Promociones</a></li>
+=======
+				<li><a href="#"><i class="fa fa-cubes"></i> Administración de Items</a></li>
+				<li><a href="#"><i class="fa fa-suitcase"></i> Administración de Empresas</a></li>
+				<li><a href="<?=base_url()?>index.php/promocion"><i class="fa fa-ticket"></i> Administración de Promociones</a></li>
+>>>>>>> upstream/master
 			</ul>
 		</div>
 
