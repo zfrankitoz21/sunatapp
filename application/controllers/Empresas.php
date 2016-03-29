@@ -6,7 +6,6 @@ class Empresas extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->database('default');
-        $this->load->helper(array('form'));
         $this->load->model('mempresas');
         $this->load->model('mfiles');
     }
@@ -28,25 +27,29 @@ class Empresas extends CI_Controller {
 	public function edit($id) {
 		$config['upload_path'] = './uploads/empresas';
 		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']	= '100';
-		$config['max_width']  = '1024';
-		$config['max_height']  = '768';
-
 		$this->load->library('upload', $config);
 		
-		if ( $this->upload->do_upload() ) {
+		if ( $this->upload->do_upload('icon') ) {
 			$dataimg = $this->upload->data();
-			$imagenid = $this->mfiles->insert_file( array('nombre' => $dataimg['file_name'], 'fecha' => strtotime("now")) );
+			$iconid = $this->mfiles->insert_file( array('nombre' => $dataimg['file_name'], 'fecha' => strtotime("now")) );
 		}
-		else {
-			$imagenid = $this->input->post('imagen'); 
+		else
+			$iconid = $this->input->post('icon');
+
+		if ( $this->upload->do_upload('logo') ) {
+			$dataimg = $this->upload->data();
+			$logoid = $this->mfiles->insert_file( array('nombre' => $dataimg['file_name'], 'fecha' => strtotime("now")) );
 		}
+		else
+			$logoid = $this->input->post('logo');
+
 		
 		$data['data'] = $this->mempresas->empresas_entrys();
 		$formdata = array (
 			'id' => $id,
 			'empresa' => $this->input->post('empresa'),
-			'imagen' => $imagenid
+			'icon' => $iconid,
+			'logo' => $logoid
 		);
 		$this->mempresas->empresas_update($formdata);
 		redirect('empresas');
@@ -55,24 +58,20 @@ class Empresas extends CI_Controller {
 	public function add() {
 		$config['upload_path'] = './uploads/empresas';
 		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']	= '100';
-		$config['max_width']  = '1024';
-		$config['max_height']  = '768';
-
 		$this->load->library('upload', $config);
 		
-		if ( $this->upload->do_upload() ) {
+		if ( $this->upload->do_upload('icon') ) {
 			$dataimg = $this->upload->data();
-			$imagenid = $this->mfiles->insert_file( array('nombre' => $dataimg['file_name'], 'fecha' => strtotime("now")) );
+			$iconid = $this->mfiles->insert_file( array('nombre' => $dataimg['file_name'], 'fecha' => strtotime("now")) );
 		}
-		else {
-			$imagenid = $this->input->post('imagen'); 
+		if ( $this->upload->do_upload('logo') ) {
+			$dataimg = $this->upload->data();
+			$logoid = $this->mfiles->insert_file( array('nombre' => $dataimg['file_name'], 'fecha' => strtotime("now")) );
 		}
-		
-		$data['data'] = $this->mempresas->empresas_entrys();
 		$formdata = array (
 			'empresa' => $this->input->post('empresa'),
-			'imagen' => $imagenid
+			'icon' => $iconid ? $iconid : 0,
+			'logo' => $logoid ? $logoid : 0,
 		);
 		$this->mempresas->empresas_create($formdata);
 		redirect('empresas');

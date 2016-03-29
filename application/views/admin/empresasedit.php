@@ -18,10 +18,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</header>
 		<div class="right-list-admin">
 			<ul class="list-menu">
+				<li><a href="<?=base_url()?>/index.php/promocion"><i class="fa fa-ticket"></i> Administración de Promociones</a></li>
+				<li><a href="<?=base_url()?>index.php/destacadas"><i class="fa fa-star"></i> Administración de Destacadas</a></li>
 				<li><a href="<?=base_url()?>index.php/categorias"><i class="fa fa-clone"></i> Administración de Categorías</a></li>
 				<li><a class="active" href="<?=base_url()?>index.php/empresas"><i class="fa fa-suitcase"></i> Administración de Empresas</a></li>
-				<li><a href="#"><i class="fa fa-star"></i> Administración de Destacadas</a></li>
-				<li><a href="<?=base_url()?>/index.php/promocion"><i class="fa fa-ticket"></i> Administración de Promociones</a></li>
+				<li><a href="<?=base_url()?>index.php/provincias"><i class="fa fa-cubes"></i> Administración de Provincias</a></li>
 			</ul>
 		</div>
 
@@ -41,21 +42,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				echo form_open_multipart('empresas/add');
 			?>
 
-			<table>
+			<table class="table table-bordered table-striped">
 				<tr>
 					<td>Nombre : </td><td><input type="text" name="empresa" value="<?=@$data->empresa?>"></td>
 				</tr>
 				<tr>
-					<td>Imagen : </td><td><input type="file" name="userfile" size="20"></td>
+					<td>Icon : </td><td><input type="file" name="icon" size="20"></td>
+					<?php if ( @$data->icon ) { ?>
+					<td>
+						<input type="hidden" name="icon" value="<?=$data->icon?>">
+						<img width="30" height="30" src="<?=base_url()?>uploads/empresas/<?=$data->iconimg?>">
+					</td>
+					<?php } ?>
+				</tr>
+				<tr>
+					<td>Logo : </td><td><input type="file" name="logo" size="20"></td>
+					<?php if ( @$data->logo ) { ?>
+					<td>
+						<input type="hidden" name="logo" value="<?=$data->logo?>">
+						<img width="100" height="30" src="<?=base_url()?>uploads/empresas/<?=$data->logoimg?>">
+					</td>
+			<?php } ?>
 				</tr>
 				<tr>
 					<td><input type="submit" value="<?=(@$data? 'Editar' : 'Crear')?>"></td>
 				</tr>
 			</table>
-			<?php if ( @$data->imagen ) { ?>
-				<input type="hidden" name="imagen" value="<?=$data->imagen?>">
-				<img width="30" height="30" src="<?=base_url()?>uploads/empresas/<?=$data->nombre?>"><br>
-			<?php } ?>
 		</div>
 	</div>
 </body>

@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta charset="utf-8">
 	<title>SUNAT INTRANET</title>
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/style.css">
-		<link rel="stylesheet" href="<?=base_url()?>css/font-awesome.min.css">
+	<link rel="stylesheet" href="<?=base_url()?>css/font-awesome.min.css">
 </head>
 <body>
 
@@ -18,10 +18,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</header>
 		<div class="right-list-admin">
 			<ul class="list-menu">
-				<li><a href="<?=base_url()?>index.php/categorias"><i class="fa fa-clone"></i> Administración de Categorías</a></li>
+				<li><a href="<?=base_url()?>/index.php/promocion"><i class="fa fa-ticket"></i> Administración de Promociones</a></li>
+				<li><a href="<?=base_url()?>index.php/destacadas"><i class="fa fa-star"></i> Administración de Destacadas</a></li>
+				<li><a class="active" href="<?=base_url()?>index.php/categorias"><i class="fa fa-clone"></i> Administración de Categorías</a></li>
 				<li><a href="<?=base_url()?>index.php/empresas"><i class="fa fa-suitcase"></i> Administración de Empresas</a></li>
-				<li><a href="#"><i class="fa fa-star"></i> Administración de Destacadas</a></li>
-				<li><a href="<?=base_url()?>index.php/promocion"><i class="fa fa-ticket"></i> Administración de Promociones</a></li>
+				<li><a href="<?=base_url()?>index.php/provincias"><i class="fa fa-cubes"></i> Administración de Provincias</a></li>
 			</ul>
 		</div>
 

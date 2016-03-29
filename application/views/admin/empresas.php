@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta charset="utf-8">
 	<title>SUNAT INTRANET</title>
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/style.css">
-		<link rel="stylesheet" href="<?=base_url()?>css/font-awesome.min.css">
+	<link rel="stylesheet" href="<?=base_url()?>css/font-awesome.min.css">
 </head>
 <body>
 
@@ -18,10 +18,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</header>
 		<div class="right-list-admin">
 			<ul class="list-menu">
+				<li><a href="<?=base_url()?>/index.php/promocion"><i class="fa fa-ticket"></i> Administración de Promociones</a></li>
+				<li><a href="<?=base_url()?>index.php/destacadas"><i class="fa fa-star"></i> Administración de Destacadas</a></li>
 				<li><a href="<?=base_url()?>index.php/categorias"><i class="fa fa-clone"></i> Administración de Categorías</a></li>
 				<li><a class="active" href="<?=base_url()?>index.php/empresas"><i class="fa fa-suitcase"></i> Administración de Empresas</a></li>
-				<li><a href="#"><i class="fa fa-star"></i> Administración de Destacadas</a></li>
-				<li><a href="<?=base_url()?>index.php/promocion"><i class="fa fa-ticket"></i> Administración de Promociones</a></li>
+				<li><a href="<?=base_url()?>index.php/provincias"><i class="fa fa-cubes"></i> Administración de Provincias</a></li>
 			</ul>
 		</div>
 
@@ -31,11 +32,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<h2><a href="<?=current_url()?>/form">Añadir Empresa</a></h2>
 			</div>
 
-			<table cellspacing="14" class="table table-bordered table-striped">
+			<table class="table table-bordered table-striped">
 				<thead>
 					<tr>
 						<th scope="col"><span>Empresa</span></th>
-						<th scope="col"><span>Imagen</span></th>
+						<th scope="col"><span>Icono</span></th>
+						<th scope="col"><span>Logo</span></th>
 						<th scope="col"><span>Opciones</span></th>
 					</tr>
 				</thead>
@@ -44,7 +46,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<?php foreach ( $data as $row ) { ?>
 				<tr>
 					<td><strong><?=$row->empresa?></strong></td>
-					<td><img width="30" height="30" src="<?=base_url()?>uploads/empresas/<?=$row->nombre?>"></td>
+					<td><img width="30" height="30" src="<?=base_url()?>uploads/empresas/<?=$row->iconimg?>"></td>
+					<td><img width="100" height="30" src="<?=base_url()?>uploads/empresas/<?=$row->logoimg?>"></td>
 					<td><a href="<?=current_url()?>/form/<?=$row->id?>"><img src="<?=base_url()?>img/editar.png"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?=current_url()?>/delete/<?=$row->id?>"><img src="<?=base_url()?>img/eliminar.png"></a></td>
 				</tr>
 				<?php } ?>

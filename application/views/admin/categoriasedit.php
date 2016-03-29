@@ -18,10 +18,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</header>
 		<div class="right-list-admin">
 			<ul class="list-menu">
+				<li><a href="<?=base_url()?>/index.php/promocion"><i class="fa fa-ticket"></i> Administración de Promociones</a></li>
+				<li><a href="<?=base_url()?>index.php/destacadas"><i class="fa fa-star"></i> Administración de Destacadas</a></li>
 				<li><a class="active" href="<?=base_url()?>index.php/categorias"><i class="fa fa-clone"></i> Administración de Categorías</a></li>
 				<li><a href="<?=base_url()?>index.php/empresas"><i class="fa fa-suitcase"></i> Administración de Empresas</a></li>
-				<li><a href="#"><i class="fa fa-star"></i> Administración de Destacadas</a></li>
-				<li><a href="<?=base_url()?>/index.php/promocion"><i class="fa fa-ticket"></i> Administración de Promociones</a></li>
+				<li><a href="<?=base_url()?>index.php/provincias"><i class="fa fa-cubes"></i> Administración de Provincias</a></li>
 			</ul>
 		</div>
 
@@ -40,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		else
 			echo form_open_multipart('categorias/add');
 		?>
-			<table>
+			<table class="table table-bordered table-striped">
 				<tr>
 					<td>Nombre : </td><td><input type="text" name="categoria" value="<?=@$data->categoria?>"></td>
 				</tr>
@@ -49,16 +50,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</tr>
 				<tr>
 					<td>Imagen : </td><td><input type="file" name="userfile" size="20"></td>
+					<?php if ( @$data->imagen ) { ?>
+					<td>
+						<input type="hidden" name="imagen" value="<?=$data->imagen?>">
+						<img width="30" height="30" src="<?=base_url()?>uploads/<?=$data->nombre?>"><br>
+					</td>
+					<?php } ?>
 				</tr>
 				<tr>
 					<td><input type="submit" value="<?=(@$data? 'Editar' : 'Crear')?>"></td>
 				</tr>
 			</table>
-			<?php if ( @$data->imagen ) { ?>
-				<input type="hidden" name="imagen" value="<?=$data->imagen?>">
-				<img width="30" height="30" src="<?=base_url()?>uploads/<?=$data->nombre?>"><br>
-			<?php } ?>
-			
 		</div>
 	</div>
 

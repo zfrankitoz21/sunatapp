@@ -8,22 +8,29 @@ class Mempresas extends CI_Model
     }
     //obtenemos las entradas de todos o un usuario, dependiendo
     // si le pasamos le id como argument o no
-    public function empresas_entrys($id = false)
-    {
+    public function empresas_entrys($id = false){
+        $this->load->model('mfiles');
+        $rows = array();
         if ( $id === false ) {
-            $this->db->select('c.*, f.nombre');
+            $this->db->select('c.*');
             $this->db->from('empresas c');
-            $this->db->join('files f', 'c.imagen = f.id', 'left');
+            //$this->db->join('files f', 'c.icon = f.id', 'left');
         }
         else {
-            $this->db->select('c.*, f.nombre');
+            $this->db->select('c.*');
             $this->db->from('empresas c');
-            $this->db->join('files f', 'c.imagen = f.id', 'left');
+            //$this->db->join('files f', 'c.icon = f.id', 'left');
             $this->db->where('c.id', $id);
         }
         $query = $this->db->get();
-        if ( $query->num_rows() > 0 )
-            return $query->result();
+        if ( $query->num_rows() > 0 ) {
+            $rows = $query->result();
+            foreach ( $rows as $key => $row ) {
+                $rows[$key]->iconimg = $this->mfiles->get_file($row->icon);
+                $rows[$key]->logoimg = $this->mfiles->get_file($row->logo);
+            }
+        }
+        return $rows;
     }
     
     //insertamos un nuevo usuario en la tabla users

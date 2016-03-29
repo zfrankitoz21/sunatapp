@@ -3,244 +3,104 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Promocion extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
-    
-        public function __construct()
-        {
-            parent::__construct();
-            $this->load->model('promocion_model','promocion');
-            $this->load->model('mfiles');
-            
-            $this->load->helper(array('form', 'url'));
+    public function __construct() {
+        parent::__construct();
+        $this->load->database('default');
+        $this->load->model('mfiles');
+        $this->load->model('mpromociones');
+    }
+
+    public function index() {
+        $data['data'] = $this->mpromociones->promociones_entrys();
+        $this->load->view('admin/promociones', $data);
+    }
+
+    public function viewhtml() {
+        $this->load->view('promocion');
+    }
+
+    public function form($id = false) {
+        $this->load->model('mcategorias');
+        $this->load->model('mempresas');
+        $this->load->model('mprovincias');
+        $this->load->model('mdestacadas');
+        $data['categorias'] = $this->mcategorias->categorias_entrys();
+        $data['empresas'] = $this->mempresas->empresas_entrys();
+        $data['provincias'] = $this->mprovincias->provincias_entrys();
+        $data['datap'] = $this->mprovincias->provincias_promo($id);
+        $data['datad'] = $this->mdestacadas->destacadas_promo($id);
+        $data['data'] = $this->mpromociones->promociones_entrys($id);
+        if ( $id )
+            $this->load->view('admin/promocionesedit', $data);
+        else {
+            unset($data['data']);
+            $this->load->view('admin/promocionesedit', $data);
         }
+    }
 
-        public function index()
-        {
-            $this->load->helper('url');
-            $this->load->view('promocion_view');
-        }
-
-        public function ajax_list()
-        {
-            $list = $this->promocion->get_datatables();
-            $data = array();
-            $no = $_POST['start'];
-            foreach ($list as $promocion) {
-                $no++;
-                $row = array();
-                $row[] = $promocion->titulo;
-                $row[] = $promocion->empresa;
-                $row[] = $promocion->desc_empresa;
-                $row[] = $promocion->direccion;
-                $row[] = $promocion->telefono;
-                $row[] = $promocion->desc_descuento;
-                $row[] = $promocion->desc_restriccion;
-                $row[] = $promocion->imagen;
-
-                //add html for action
-                $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void()" title="Edit" onclick="edit_promocion('."'".$promocion->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Editar</a>
-                      <a class="btn btn-sm btn-danger" href="javascript:void()" title="Hapus" onclick="delete_promocion('."'".$promocion->id."'".')"><i class="glyphicon glyphicon-trash"></i> Eliminar</a>';
-
-                $data[] = $row;
-            }
-
-            $output = array(
-                            "draw" => $_POST['draw'],
-                            "recordsTotal" => $this->promocion->count_all(),
-                            "recordsFiltered" => $this->promocion->count_filtered(),
-                            "data" => $data,
-                    );
-            //output to json format
-            echo json_encode($output);
-        }
-
-        public function ajax_edit($id)
-        {
-            $data = $this->promocion->get_by_id($id);
-            echo json_encode($data);
-        }
-
-        public function ajax_add()
-        {
-            //set preferences
-            $config['upload_path'] = './uploads/promociones';
-            $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size']	= '100';
-            $config['max_width']  = '1024';
-            $config['max_height']  = '768';
-
-            //load upload class library
-            $this->load->library('upload', $config); 
-            /*
-            if ( $this->upload->do_upload() ) {
-                    $dataimg = $this->upload->data();
-                    $imagenid = $this->mfiles->insert_file( array('nombre' => $dataimg['file_name'], 'fecha' => strtotime("now")) );  
-            }
-            else {
-                    $imagenid = $this->input->post('imagen'); 
-                    var_dump($imagenid);
-            }*/
-            /*
-            if (!$this->upload->do_upload('filename'))
-            {
-                // case - failure
-                $upload_error = array('error' => $this->upload->display_errors());
-                $this->load->view('promocion_view', $upload_error);
-            }
-            
-            else
-            {
-                // case - success
-                $upload_data = $this->upload->data();
-                $data['success_msg'] = '<div class="alert alert-success text-center">Your file <strong>' . $upload_data['file_name'] . '</strong> was successfully uploaded!</div>';
-                $this->load->view('upload_file_view', $data);
-            }*/
-            
-            if (!$this->upload->do_upload('filename')){
-                $upload_data = $this->upload->data();
-                //$imagenid = $this->mfiles->insert_file( array('nombre' => $dataimg['file_name'], 
-                //                                        'fecha' => strtotime("now")) );  
-            }
-            
-            /*
-            $this->_validate();
-            $data = array(
-                    'titulo' => $this->input->post('titulo'),
-                    'empresa' => $this->input->post('empresa'),
-                    'desc_empresa' => $this->input->post('desc_empresa'),
-                    'direccion' => $this->input->post('direccion'),
-                    'telefono' => $this->input->post('telefono'),
-                    'desc_descuento' => $this->input->post('desc_descuento'),
-                    'desc_restriccion' => $this->input->post('desc_restriccion'),
-                    'imagen' => $this->input->post('imagen')
-                );
-            $insert = $this->promocion->save($data); */
-            //echo json_encode(array("status" => TRUE));
-            $titulo =   $upload_data['file_name'];
-            echo json_encode(array("status" => TRUE, "imagen" => $titulo));
-        }
-
-        public function ajax_update()
-        {
-            $this->_validate();
-            $data = array(
-                    'titulo' => $this->input->post('titulo'),
-                    'empresa' => $this->input->post('empresa'),
-                    'desc_empresa' => $this->input->post('desc_empresa'),
-                    'direccion' => $this->input->post('direccion'),
-                    'telefono' => $this->input->post('telefono'),
-                    'desc_descuento' => $this->input->post('desc_descuento'),
-                    'desc_restriccion' => $this->input->post('desc_restriccion'),
-                    'imagen' =>  $this->input->post('imagen')
-                );
-            $this->promocion->update(array('id' => $this->input->post('id')), $data);
-            echo json_encode(array("status" => TRUE));
-        }
-
-        public function ajax_delete($id)
-        {
-            $this->promocion->delete_by_id($id);
-            echo json_encode(array("status" => TRUE));
-        }
+    public function edit($id) {
+        $config['upload_path'] = './uploads/promociones';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $this->load->library('upload', $config);
         
-        private function _validate()
-        {
-            $data = array();
-            $data['error_string'] = array();
-            $data['inputerror'] = array();
-            $data['status'] = TRUE;
-
-            if($this->input->post('titulo') == '')
-            {
-                $data['inputerror'][] = 'titulo';
-                $data['error_string'][] = "El campo 'Título' es obligatorio.";
-                $data['status'] = FALSE;
-            }
-
-            if($this->input->post('empresa') == '')
-            {
-                $data['inputerror'][] = 'empresa';
-                $data['error_string'][] = "El campo 'Empresa' es obligatorio.";
-                $data['status'] = FALSE;
-            }
-
-            if($this->input->post('desc_empresa') == '')
-            {
-                $data['inputerror'][] = 'desc_empresa';
-                $data['error_string'][] = "El campo 'Desc. Empresa' es obligatorio.";
-                $data['status'] = FALSE;
-            }
-
-            if($this->input->post('direccion') == '')
-            {
-                $data['inputerror'][] = 'direccion';
-                $data['error_string'][] = "El campo 'Dirección' es obligatorio.";
-                $data['status'] = FALSE;
-            }
-            
-            if($this->input->post('telefono') == '')
-            {
-                $data['inputerror'][] = 'telefono';
-                $data['error_string'][] = "El campo 'Teléfono' es obligatorio.";
-                $data['status'] = FALSE;
-            } else {
-                if(!is_numeric($this->input->post('telefono')))
-                {
-                    $data['inputerror'][] = 'telefono';
-                    $data['error_string'][] = "El campo 'Teléfono' debe ser entero.";
-                    $data['status'] = FALSE;
-                }
-            }
-
-            if($this->input->post('desc_descuento') == '')
-            {
-                $data['inputerror'][] = 'desc_descuento';
-                $data['error_string'][] = "El campo 'Desc. Descuento' es obligatorio.";
-                $data['status'] = FALSE;
-            }
-            
-            if($this->input->post('desc_restriccion') == '')
-            {
-                $data['inputerror'][] = 'desc_restriccion';
-                $data['error_string'][] = "El campo 'Desc. Restricción' es obligatorio.";
-                $data['status'] = FALSE;
-            }
-
-            /*
-            if($this->input->post('imagen') == '')
-            {
-                $data['inputerror'][] = 'imagen';
-                $data['error_string'][] = "El campo 'Imagen' es obligatorio.";
-                $data['status'] = FALSE;
-            } else {
-                if(!is_numeric($this->input->post('imagen')))
-                {
-                    $data['inputerror'][] = 'imagen';
-                    $data['error_string'][] = "El campo 'Imagen' debe ser entero.";
-                    $data['status'] = FALSE;
-                }
-            }
-            */
-            
-            if($data['status'] === FALSE)
-            {
-                echo json_encode($data);
-                exit();
-            }
+        if ( $this->upload->do_upload('imagen') ) {
+            $dataimg = $this->upload->data();
+            $imagenid = $this->mfiles->insert_file( array('nombre' => $dataimg['file_name'], 'fecha' => strtotime("now")) );
+            //rename("./uploads/promociones/" . $dataimg['file_name'], "./uploads/promociones/" . $imagenid . $dataimg['file_ext']);
         }
+        else
+            $imagenid = $this->input->post('imagenh'); 
+
+        $formdata = array (
+            'id' => $id,
+            'titulo' => $this->input->post('titulo'),
+            'bajada' => $this->input->post('bajada'),
+            'descripcion' => $this->input->post('descripcion'),
+            'restriccion' => $this->input->post('restriccion'),
+            'direcciones' => $this->input->post('direcciones'),
+            'descuento' => $this->input->post('descuento'),
+            'empresaid' => $this->input->post('empresaid'),
+            'categoriaid' => $this->input->post('categoriaid'),
+            'nuevo' => $this->input->post('nuevo'),
+            'imagen' => $imagenid,
+            'mod_created' => strtotime("now")
+        );
+        $this->mpromociones->promociones_update($formdata);
+        $this->mpromociones->promociones_destacadas($id, $this->input->post('destacadas'));
+        $this->mpromociones->promociones_provincia_create($id, $this->input->post('provincias'));
+        redirect('promocion');
+    }
+
+    public function add() {
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $this->load->library('upload', $config);
         
+        if ( $this->upload->do_upload('imagen') ) {
+            $dataimg = $this->upload->data();
+            $imagenid = $this->mfiles->insert_file( array('nombre' => $dataimg['file_name'], 'fecha' => strtotime("now")) );
+        }
+        $data['data'] = $this->mpromociones->promociones_entrys();
+        $formdata = array (
+            'titulo' => $this->input->post('titulo'),
+            'bajada' => $this->input->post('bajada'),
+            'descripcion' => $this->input->post('descripcion'),
+            'restriccion' => $this->input->post('restriccion'),
+            'direcciones' => $this->input->post('direcciones'),
+            'descuento' => $this->input->post('descuento'),
+            'empresaid' => $this->input->post('empresaid'),
+            'categoriaid' => $this->input->post('categoriaid'),
+            'nuevo' => $this->input->post('nuevo'),
+            'imagen' => $imagenid,
+            'created' => strtotime("now"),
+            'mod_created' => strtotime("now"),
+        );
+        $this->mpromociones->promociones_create($formdata);
+        redirect('promocion');
+    }
+
+    public function delete($id) {
+        $this->mpromociones->promociones_delete($id);
+        redirect('promocion');
+    }
 }

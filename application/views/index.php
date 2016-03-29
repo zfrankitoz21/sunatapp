@@ -151,7 +151,7 @@
 				   	   	   	   	    <div class="new">¡NUEVOS!</div>
 				   	   	   	   </div>
 				   	   	   	   <figure>
-				   	   	   	   	<a href="<?=base_url()?>index.php/promocion"><img src="<?=base_url()?>tmp/thumb_promo.jpg" alt=""></a>
+				   	   	   	   	<a href="<?=base_url()?>index.php/promocion/viewhtml"><img src="<?=base_url()?>tmp/thumb_promo.jpg" alt=""></a>
 				   	   	   	   </figure>
 				   	   	   	   <div class="footer-promo">
 				   	   	   	        <div class="percent">
@@ -171,7 +171,7 @@
 				   	   	   	   	    <div class="sub-title">Evaluación gratuita</div>
 				   	   	   	   </div>
 				   	   	   	   <figure>
-				   	   	   	   	<a href="<?=base_url()?>index.php/promocion"><img src="<?=base_url()?>tmp/thumb_promo.jpg" alt=""></a>
+				   	   	   	   	<a href="<?=base_url()?>index.php/promocion/viewhtml"><img src="<?=base_url()?>tmp/thumb_promo.jpg" alt=""></a>
 				   	   	   	   </figure>
 				   	   	   	   <div class="footer-promo">
 				   	   	   	        <div class="percent">
@@ -191,7 +191,7 @@
 				   	   	   	   	    <div class="sub-title">Evaluación gratuita</div>
 				   	   	   	   </div>
 				   	   	   	   <figure>
-				   	   	   	   	<a href="<?=base_url()?>index.php/promocion"><img src="<?=base_url()?>tmp/thumb_promo.jpg" alt=""></a>
+				   	   	   	   	<a href="<?=base_url()?>index.php/promocion/viewhtml"><img src="<?=base_url()?>tmp/thumb_promo.jpg" alt=""></a>
 				   	   	   	   </figure>
 				   	   	   	   <div class="footer-promo">
 				   	   	   	        <div class="percent">
@@ -214,7 +214,7 @@
 				   	   	   	   	    <div class="sub-title">Evaluación gratuita</div>
 				   	   	   	   </div>
 				   	   	   	   <figure>
-				   	   	   	   	<a href="<?=base_url()?>index.php/promocion"><img src="<?=base_url()?>tmp/thumb_promo.jpg" alt=""></a>
+				   	   	   	   	<a href="<?=base_url()?>index.php/promocion/viewhtml"><img src="<?=base_url()?>tmp/thumb_promo.jpg" alt=""></a>
 				   	   	   	   </figure>
 				   	   	   	   <div class="footer-promo">
 				   	   	   	        <div class="percent">
@@ -234,7 +234,7 @@
 				   	   	   	   	    <div class="sub-title">Evaluación gratuita</div>
 				   	   	   	   </div>
 				   	   	   	   <figure>
-				   	   	   	   	<a href="<?=base_url()?>index.php/promocion"><img src="<?=base_url()?>tmp/thumb_promo.jpg" alt=""></a>
+				   	   	   	   	<a href="<?=base_url()?>index.php/promocion/viewhtml"><img src="<?=base_url()?>tmp/thumb_promo.jpg" alt=""></a>
 				   	   	   	   </figure>
 				   	   	   	   <div class="footer-promo">
 				   	   	   	        <div class="percent">
@@ -254,7 +254,7 @@
 				   	   	   	   	    <div class="sub-title">Evaluación gratuita</div>
 				   	   	   	   </div>
 				   	   	   	   <figure>
-				   	   	   	   	<a href="<?=base_url()?>index.php/promocion"><img src="<?=base_url()?>tmp/thumb_promo.jpg" alt=""></a>
+				   	   	   	   	<a href="<?=base_url()?>index.php/promocion/viewhtml"><img src="<?=base_url()?>tmp/thumb_promo.jpg" alt=""></a>
 				   	   	   	   </figure>
 				   	   	   	   <div class="footer-promo">
 				   	   	   	        <div class="percent">

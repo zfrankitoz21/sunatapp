@@ -136,8 +136,9 @@ table {
 }
 
 .table {
-  width: 40%;
+  width: 50%;
   margin-bottom: 20px;
+  float: left;
 }
 
 .table th,
@@ -442,7 +443,10 @@ header h1{ font-size: 15px;}
     color: #00b9eb; }
 .right-list-admin .list-menu > li > a i{ margin-right: 5px; font-size: 14px;}
 
-.right-content{ overflow: hidden; background: #f1f1f1; padding: 15px; height: 100%;}
+.right-content{ overflow: auto; background: #f1f1f1; padding: 15px; height: 100%;}
 .list-mod-panel{ margin-bottom: 20px;}
 .list-mod-panel > h2{ display: inline-block; font-size: 14px;  padding: 5px 8px; background: #0073aa; border-radius: 3px; color: #fff;}
 .list-mod-panel > h2 a{color: #fff;}
+
+ul { list-style-type: none; margin: 0; padding: 0; margin-bottom: 10px; }
+li { margin: 5px; padding: 5px; }
