@@ -13,7 +13,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div id="container">
 		<header>
 			<div class="header-inner">
-			   <h1>Bienvenidos al administrador de contenido SUNAT</h1>
+				<h1 style="float: left;">Bienvenidos al administrador de contenido SUNAT</h1>
+				<p style="float: right;">Bienvenido <em>Admin</em>, <a href="<?=base_url()?>index.php/admin/unset_session">Cerrar Sesión</a></p>
 			</div>
 		</header>
 		<div class="right-list-admin">
@@ -53,7 +54,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<?php if ( @$data->imagen ) { ?>
 					<td>
 						<input type="hidden" name="imagen" value="<?=$data->imagen?>">
-						<img width="30" height="30" src="<?=base_url()?>uploads/<?=$data->nombre?>"><br>
+						<img width="30" height="30" src="<?=base_url()?>uploads/categorias/<?=$data->nombre?>"><br>
 					</td>
 					<?php } ?>
 				</tr>

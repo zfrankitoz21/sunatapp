@@ -13,8 +13,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div id="container">
 		<header>
 			<div class="header-inner">
-			   <h1 style="float: left;">Bienvenidos al administrador de contenido SUNAT</h1>
-			   <p style="float: right;">Bienvenido <em>Admin</em>, <a href="<?=base_url()?>index.php/admin/unset_session">Cerrar Sesión</a></p>
+				<h1 style="float: left;">Bienvenidos al administrador de contenido SUNAT</h1>
+				<p style="float: right;">Bienvenido <em>Admin</em>, <a href="<?=base_url()?>index.php/admin/unset_session">Cerrar Sesión</a></p>
 			</div>
 		</header>
 		<div class="right-list-admin">
@@ -33,6 +33,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<h2><a href="<?=current_url()?>/form">Añadir Promoción</a></h2>
 			</div>
 
+			<form id="conf" method="post" action="<?=base_url()?>index.php/promocion">
+				<table>
+					<tr>
+						<td>Seleccionar Provincia : </td>
+						<td>
+							<select name="provincia">
+							<?php foreach ( $provincias as $key => $value ) { ?>
+								<option value="<?=$value->id?>"><?=$value->nombre?></option>
+							<?php } ?>
+						</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Seleccionar Estado : </td>
+						<td><select name="estado"><option value="1">Activo</option><option value="0">Inactivo</option></select></td>
+					</tr>
+					<tr>
+						<td><input type="submit" value="Buscar"></td>
+					</tr>
+				</table>
+			</form>
+			<hr>
 			<table cellspacing="14" class="table table-bordered table-striped">
 				<thead>
 					<tr>

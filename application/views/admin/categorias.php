@@ -13,7 +13,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div id="container">
 		<header>
 			<div class="header-inner">
-			   <h1>Bienvenidos al administrador de contenido SUNAT</h1>
+				<h1 style="float: left;">Bienvenidos al administrador de contenido SUNAT</h1>
+				<p style="float: right;">Bienvenido <em>Admin</em>, <a href="<?=base_url()?>index.php/admin/unset_session">Cerrar Sesión</a></p>
 			</div>
 		</header>
 		<div class="right-list-admin">
@@ -47,7 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<tr>
 						<td><strong><?=$row->categoria?></strong></td>
 						<td><div style="background: <?=$row->color?>" width="30" height="30"><?=$row->color?></div></td>
-						<td><?php if ( $row->imagen ) { ?> <img width="30" height="30" src="<?=base_url()?>uploads/<?=$row->nombre?>"><?php } ?></td>
+						<td><?php if ( $row->imagen ) { ?> <img width="30" height="30" src="<?=base_url()?>uploads/categorias/<?=$row->nombre?>"><?php } ?></td>
 						<td><a href="<?=current_url()?>/form/<?=$row->id?>"><img src="<?=base_url()?>img/editar.png"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?=current_url()?>/delete/<?=$row->id?>"><img src="<?=base_url()?>img/eliminar.png"></a></td>
 					</tr>
 					<?php } ?>

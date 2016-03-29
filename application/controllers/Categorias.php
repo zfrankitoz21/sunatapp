@@ -52,7 +52,7 @@ class Categorias extends CI_Controller {
 	}
 
 	public function add() {
-		$config['upload_path'] = './uploads/';
+		$config['upload_path'] = './uploads/categorias';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '100';
 		$config['max_width']  = '1024';

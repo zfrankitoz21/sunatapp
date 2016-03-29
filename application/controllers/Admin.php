@@ -8,7 +8,10 @@ class Admin extends CI_Controller {
     }
 
 	public function index() {
-		$this->load->view('login');
+		if ( is_logged_in() ) 
+			redirect('promocion');
+		else
+			$this->load->view('login');
 	}
 
 	public function set_session() {

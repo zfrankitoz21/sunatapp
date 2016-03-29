@@ -29,12 +29,12 @@ CREATE TABLE IF NOT EXISTS `destacadas` (
   `provid` int(11) NOT NULL,
   `imagen` int(11) NOT NULL DEFAULT '0',
   `weight` tinyint(3) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 INSERT INTO `destacadas` (`id`, `promoid`, `provid`, `imagen`, `weight`) VALUES
-(2, 2, 1, 34, 0),
-(3, 1, 1, 0, 0),
-(4, 1, 2, 0, 0);
+(5, 1, 1, 0, 1),
+(7, 2, 1, 40, 0),
+(12, 5, 2, 0, 0);
 
 CREATE TABLE IF NOT EXISTS `empresas` (
   `id` int(11) NOT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `files` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `fecha` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
 
 INSERT INTO `files` (`id`, `nombre`, `fecha`) VALUES
 (1, 'salud2.jpg', 1459051372),
@@ -89,7 +89,13 @@ INSERT INTO `files` (`id`, `nombre`, `fecha`) VALUES
 (31, 'starbucks_hz.png', 1459216598),
 (32, 'descarga.png', 1459216736),
 (33, 'logo-tottus.jpg', 1459216736),
-(34, 'maxresdefault.jpg', 1459218310);
+(34, 'maxresdefault.jpg', 1459218310),
+(35, 'Och_15324_Fl-220-Txoko-Fg(3)09.jpg', 1459234789),
+(36, 'Och_15324_Fl-220-Txoko-Fg(3)09.jpg', 1459234814),
+(37, '12903484_1753579744875634_378723448_o.jpg', 1459234831),
+(38, 'regalo.jpg', 1459234923),
+(39, '12244001_10206396543085453_893107207_n.jpg', 1459235364),
+(40, 'maxresdefault1.jpg', 1459238974);
 
 CREATE TABLE IF NOT EXISTS `promociones` (
   `id` int(11) NOT NULL,
@@ -105,11 +111,13 @@ CREATE TABLE IF NOT EXISTS `promociones` (
   `imagen` int(11) NOT NULL DEFAULT '0',
   `created` int(11) NOT NULL,
   `mod_created` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 INSERT INTO `promociones` (`id`, `titulo`, `bajada`, `descripcion`, `restriccion`, `direcciones`, `descuento`, `empresaid`, `categoriaid`, `nuevo`, `imagen`, `created`, `mod_created`) VALUES
-(1, 'Profilaxis y Fluorización', 'Evaluación gratuita', 'Realizar una cita previa y mostrar cupón para acceder al descuento\r\nEvaluación Gratis, tarifa regular S/.60\r\nProfilaxis S/.33, tarifa regular S/.60\r\nFluorización S/.30, tarifa regular S/.60\r\nPeriodo de validez: Hasta 2016 en la sedes mencionadas.', 'Realizar una cita previa y mostrar cupón para acceder al descuento\r\nEvaluación Gratis, tarifa regular S/.60\r\nProfilaxis S/.33, tarifa regular S/.60\r\nFluorización S/.30, tarifa regular S/.60\r\nPeriodo de validez: Hasta 2016 en la sedes mencionadas.', 'Miraflores / surco\r\nAv. La Merced 227,377-0510 / 2733-3333\r\nMiraflores / surco\r\nAv. La Merced 227,377-0510 / 2733-3333\r\nMiraflores / surco\r\nAv. La Merced 227,377-0510 / 2733-3333\r\nMiraflores / surco\r\nAv. La Merced 227,377-0510 / 2733-3333\r\nMiraflores / surco\r\nAv. La Merced 227,377-0510 / 2733-3333\r\nMiraflores / surco\r\nAv. La Merced 227,377-0510 / 2733-3333', '24', 1, 1, 1, 28, 1459202544, 1459215859),
-(2, 'Royal Decameron', 'Descuento Exclusivo', 'TEST', 'TEST', 'TEST', '80', 4, 7, 1, 30, 1459204255, 1459214187);
+(1, 'Profilaxis y Fluorización', 'Evaluación gratuita', 'Realizar una cita previa y mostrar cupón para acceder al descuento\r\nEvaluación Gratis, tarifa regular S/.60\r\nProfilaxis S/.33, tarifa regular S/.60\r\nFluorización S/.30, tarifa regular S/.60\r\nPeriodo de validez: Hasta 2016 en la sedes mencionadas.', 'Realizar una cita previa y mostrar cupón para acceder al descuento\r\nEvaluación Gratis, tarifa regular S/.60\r\nProfilaxis S/.33, tarifa regular S/.60\r\nFluorización S/.30, tarifa regular S/.60\r\nPeriodo de validez: Hasta 2016 en la sedes mencionadas.', 'Miraflores / surco\r\nAv. La Merced 227,377-0510 / 2733-3333\r\nMiraflores / surco\r\nAv. La Merced 227,377-0510 / 2733-3333\r\nMiraflores / surco\r\nAv. La Merced 227,377-0510 / 2733-3333\r\nMiraflores / surco\r\nAv. La Merced 227,377-0510 / 2733-3333\r\nMiraflores / surco\r\nAv. La Merced 227,377-0510 / 2733-3333\r\nMiraflores / surco\r\nAv. La Merced 227,377-0510 / 2733-3333', '24', 1, 1, 1, 28, 1459202544, 1459234939),
+(2, 'Royal Decameron', 'Descuento Exclusivo', 'TEST', 'TEST', 'TEST', '80', 4, 7, 1, 30, 1459204255, 1459234942),
+(3, 'Cafecito Express', 'expresito', 'Test', 'test', 'test', '15', 3, 3, 1, 36, 1459234789, 1459234814),
+(5, 'test', 'test', 'gdfgdgdgd', 'gdgdsgsd', 'gsdgsdgsd', '34', 5, 3, 1, 39, 1459235364, 1459238837);
 
 CREATE TABLE IF NOT EXISTS `promociones_provincias` (
   `promoid` int(11) NOT NULL,
@@ -117,46 +125,26 @@ CREATE TABLE IF NOT EXISTS `promociones_provincias` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `promociones_provincias` (`promoid`, `provid`) VALUES
+(3, 1),
+(3, 2),
+(1, 1),
+(1, 2),
 (2, 1),
 (2, 2),
-(1, 1),
-(1, 2);
+(4, 1),
+(6, 1),
+(5, 2);
 
 CREATE TABLE IF NOT EXISTS `provincias` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(30) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `nombre` varchar(30) NOT NULL,
+  `ndestacadas` tinyint(1) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
-INSERT INTO `provincias` (`id`, `nombre`) VALUES
-(1, 'Lima'),
-(2, 'Huancayo');
-
-CREATE TABLE IF NOT EXISTS `tbl_promociones` (
-  `id` int(11) NOT NULL,
-  `titulo` varchar(150) NOT NULL,
-  `empresa` varchar(150) NOT NULL,
-  `desc_empresa` varchar(256) NOT NULL,
-  `direccion` varchar(256) NOT NULL,
-  `telefono` int(11) NOT NULL,
-  `desc_descuento` varchar(256) NOT NULL,
-  `desc_restriccion` varchar(256) NOT NULL,
-  `imagen` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
-
-INSERT INTO `tbl_promociones` (`id`, `titulo`, `empresa`, `desc_empresa`, `direccion`, `telefono`, `desc_descuento`, `desc_restriccion`, `imagen`) VALUES
-(1, 'Título 1', 'Empresa 1', 'Desc Empresa 15', 'Direccion 1', 1234567, 'Desc Descuento 1', 'Desc Restriccion 1', 0),
-(2, 'Titulo 2', 'Empresa 2', 'Desc Empresa 2', 'Direccion 2', 1234567, 'Desc Descuento 2', 'Desc Restriccion 2', 2),
-(3, 'Titulo 3', 'Empresa 3', 'Desc Empresa 3', 'Direccion 3', 1234567, 'Desc Descuento 3', 'Desc Restriccion 3', 3),
-(4, 'Titulo 4', 'Empresa 4 ', 'Desc Empresa 4', 'Direccion 4', 1234567, 'Desc Descuento 4', 'Desc Restriccion 4', 4),
-(5, 'Título 547', 'Empresa 5', 'Desc Empresa 5', 'Direccion 5', 278788, 'Desc Descuento 5', 'Desc Descuento 5', 0);
-
-CREATE TABLE IF NOT EXISTS `variables` (
-  `variable` varchar(20) NOT NULL,
-  `value` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `variables` (`variable`, `value`) VALUES
-('ndestacadas', '4');
+INSERT INTO `provincias` (`id`, `nombre`, `ndestacadas`) VALUES
+(1, 'Lima', 4),
+(2, 'Huancayo', 2),
+(4, 'Cuzco', 1);
 
 
 ALTER TABLE `categorias`
@@ -175,26 +163,21 @@ ALTER TABLE `promociones`
   ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `provincias`
-  ADD PRIMARY KEY (`id`);
-
-ALTER TABLE `tbl_promociones`
   ADD PRIMARY KEY (`id`);
 
 
 ALTER TABLE `categorias`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 ALTER TABLE `destacadas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 ALTER TABLE `empresas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 ALTER TABLE `files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
 ALTER TABLE `promociones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 ALTER TABLE `provincias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
-ALTER TABLE `tbl_promociones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

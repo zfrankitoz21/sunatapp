@@ -12,7 +12,9 @@ class Promocion extends CI_Controller {
     }
 
     public function index() {
+        $this->load->model('mprovincias');
         $data['data'] = $this->mpromociones->promociones_entrys();
+        $data['provincias'] = $this->mprovincias->provincias_entrys();
         $this->load->view('admin/promociones', $data);
     }
 

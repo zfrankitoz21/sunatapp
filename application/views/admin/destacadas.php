@@ -39,7 +39,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div id="container">
 		<header>
 			<div class="header-inner">
-			   <h1>Bienvenidos al administrador de contenido SUNAT</h1>
+				<h1 style="float: left;">Bienvenidos al administrador de contenido SUNAT</h1>
+				<p style="float: right;">Bienvenido <em>Admin</em>, <a href="<?=base_url()?>index.php/admin/unset_session">Cerrar Sesión</a></p>
 			</div>
 		</header>
 		<div class="right-list-admin">
@@ -82,7 +83,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div id="sortable" style="width:20%;">
 				<ul>
 				<?php foreach ( $data as $row ) { ?>
-					<li class="ui-state-default" id="<?=$row->id?>"><?=$row->titulo?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?=base_url()?>index.php/destacadas/form/<?=$row->id?>"><img src="<?=base_url()?>img/editar.png"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?=base_url()?>index.php/destacadas/delete/<?=$row->id?>"><img src="<?=base_url()?>img/eliminar.png"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a title="Ver Promoción" href="<?=base_url()?>index.php/promocion/form/<?=$row->promoid?>"><img src="<?=base_url()?>img/ver.png"></a>
+					<li class="ui-state-default" id="<?=$row->id?>"><p><?=$row->titulo?></p><p><a href="<?=base_url()?>index.php/destacadas/form/<?=$row->id?>"><img src="<?=base_url()?>img/editar.png"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?=base_url()?>index.php/destacadas/delete/<?=$row->id?>"><img src="<?=base_url()?>img/eliminar.png"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a title="Ver Promoción" href="<?=base_url()?>index.php/promocion/form/<?=$row->promoid?>"><img src="<?=base_url()?>img/ver.png"></a></p>
 					</li>
 				<?php } ?>
 				</ul>
