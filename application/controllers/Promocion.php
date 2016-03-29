@@ -8,6 +8,7 @@ class Promocion extends CI_Controller {
         $this->load->database('default');
         $this->load->model('mfiles');
         $this->load->model('mpromociones');
+        is_logged_in() ? true : redirect('admin');
     }
 
     public function index() {
@@ -27,9 +28,11 @@ class Promocion extends CI_Controller {
         $data['categorias'] = $this->mcategorias->categorias_entrys();
         $data['empresas'] = $this->mempresas->empresas_entrys();
         $data['provincias'] = $this->mprovincias->provincias_entrys();
-        $data['datap'] = $this->mprovincias->provincias_promo($id);
-        $data['datad'] = $this->mdestacadas->destacadas_promo($id);
-        $data['data'] = $this->mpromociones->promociones_entrys($id);
+        if ( $id ) {
+            $data['datap'] = $this->mprovincias->provincias_promo($id);
+            $data['datad'] = $this->mdestacadas->destacadas_promo($id);
+            $data['data'] = $this->mpromociones->promociones_entrys($id);
+        }
         if ( $id )
             $this->load->view('admin/promocionesedit', $data);
         else {
@@ -72,7 +75,7 @@ class Promocion extends CI_Controller {
     }
 
     public function add() {
-        $config['upload_path'] = './uploads/';
+        $config['upload_path'] = './uploads/promociones';
         $config['allowed_types'] = 'gif|jpg|png';
         $this->load->library('upload', $config);
         
@@ -90,16 +93,19 @@ class Promocion extends CI_Controller {
             'descuento' => $this->input->post('descuento'),
             'empresaid' => $this->input->post('empresaid'),
             'categoriaid' => $this->input->post('categoriaid'),
-            'nuevo' => $this->input->post('nuevo'),
-            'imagen' => $imagenid,
+            'nuevo' => $this->input->post('nuevo') ? $this->input->post('nuevo') : 0,
+            'imagen' => $imagenid ? $imagenid : 0,
             'created' => strtotime("now"),
             'mod_created' => strtotime("now"),
         );
-        $this->mpromociones->promociones_create($formdata);
+        $id = $this->mpromociones->promociones_create($formdata);
+        $this->mpromociones->promociones_provincia_create($id, $this->input->post('provincias'));
         redirect('promocion');
     }
 
     public function delete($id) {
+        $this->load->model('mdestacadas');
+        $this->mdestacadas->destacadas_delete_bypromo($id);
         $this->mpromociones->promociones_delete($id);
         redirect('promocion');
     }

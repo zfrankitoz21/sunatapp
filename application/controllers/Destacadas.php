@@ -9,31 +9,31 @@ class Destacadas extends CI_Controller {
         $this->load->model('mdestacadas');
         $this->load->model('mfiles');
         $this->load->model('mprovincias');
+        is_logged_in() ? true : redirect('admin');
     }
 
 	public function index($provid = 1) {
-		$data['data'] = $this->mdestacadas->destacadas_entrys($provid);
-		$data['provincias'] = $this->mprovincias->provincias_entrys();
-		$data['ndestacadas'] = $this->mdestacadas->destacadas_get_conf('ndestacadas');
-		$data['provid'] = $provid;
-		$this->load->view('admin/destacadas', $data);
+		redirect('destacadas/lista');
 	}
 
 	public function lista($provid = 1) {
-		if ( $_POST ) {
+		if ( $_POST )
 			$provid = $this->input->post('provincia');
-			$this->mdestacadas->destacadas_save_conf(array('value' => $this->input->post('conf_items')));
-		}
 		$data['provid'] = $provid;
 		$data['data'] = $this->mdestacadas->destacadas_entrys($provid);
 		$data['provincias'] = $this->mprovincias->provincias_entrys();
-		$data['ndestacadas'] = $this->mdestacadas->destacadas_get_conf('ndestacadas');
+		$data['ndestacadas'] = $this->mprovincias->provincias_get_ndestacadas($provid);
 		$this->load->view('admin/destacadas', $data);
 	}
 
 	public function form($id) {
 		$data['data'] = $this->mdestacadas->destacadas_promocion($id);
         $this->load->view('admin/destacadasedit', $data);
+	}
+
+	public function sort() {
+		$order = explode(',', $_POST['order']);
+		$this->mdestacadas->destacadas_sort($order, $_POST['provid']);
 	}
 
 	public function edit($id) {

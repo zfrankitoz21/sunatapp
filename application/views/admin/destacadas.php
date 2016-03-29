@@ -16,23 +16,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	        	connectWith: '#sortable ul',
 	        	placeholder: 'ui-state-highlight',
 	        	distance: 5,
-	        	update: function(event, ui){
-	            
-	            var newOrder = $(this).sortable('toArray').toString();
-	            var _parent = Number(ui.item[0].parentElement.id);
-	            var id_item = ui.item[0].id;
-	            if (!isNaN(_parent))
-	                id_parent = _parent;
-	            
-	            $("#result").html("Datos a enviar: order=" + newOrder + "&parent=" + id_parent + "&id=" + id_item)
-	            /* QUITAR COMENTARIOS PARA ENVIAR DATOS
-	            $.ajax({
-	                url: 'save.json.php?to=menu_order',
-	                data: 'order=' + newOrder + '&parent=' + id_parent + '&id=' + id_item,
-	                type: 'POST'
-	            });
-	            */
-	        }
+	        	update: function(event, ui) {
+		            var newOrder = $(this).sortable('toArray');//.toString();
+		            //$("#result").html("Datos a enviar: order=" + newOrder + "&parent=" + id_parent + "&id=" + id_item)
+					$.ajax({
+		                url: 'sort',
+		                data: 'order=' + newOrder,
+		                type: 'POST',
+		                dataType: 'json'
+		            });
+	        	}
 	    	});
 		});
 
@@ -70,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<tr>
 						<td>Seleccionar provincia : </td>
 						<td>
-							<select name="provincia" onChange="changeProvincia(this.value);">
+							<select id="provincia" name="provincia" onChange="changeProvincia(this.value);">
 							<?php foreach ( $provincias as $key => $value ) { ?>
 								<option <?=($provid==$value->id)?' selected':''?> value="<?=$value->id?>"><?=$value->nombre?></option>
 							<?php } ?>
@@ -79,20 +72,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</tr>
 					<tr>
 						<td>Items Destacados :</td>
-						<td><input size="1" type="text" name="conf_items" value="<?=$ndestacadas?>"></td>
+						<td><input size="1" readonly type="text" value="<?=$ndestacadas?>"></td>
 					</tr>
 				</table>
 			</form>
 			<hr>
 
+			<?php if ( $data ) { ?>
 			<div id="sortable" style="width:20%;">
 				<ul>
 				<?php foreach ( $data as $row ) { ?>
-					<li class="ui-state-default" id="<?=$row->id?>"><a href="<?=base_url()?>index.php/destacadas/form/<?=$row->id?>"><?=$row->titulo?></a></li>
+					<li class="ui-state-default" id="<?=$row->id?>"><?=$row->titulo?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?=base_url()?>index.php/destacadas/form/<?=$row->id?>"><img src="<?=base_url()?>img/editar.png"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?=base_url()?>index.php/destacadas/delete/<?=$row->id?>"><img src="<?=base_url()?>img/eliminar.png"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a title="Ver Promoción" href="<?=base_url()?>index.php/promocion/form/<?=$row->promoid?>"><img src="<?=base_url()?>img/ver.png"></a>
+					</li>
 				<?php } ?>
 				</ul>
 			</div>
 			<div id="result">Reordenar para obtener resultados...</div>
+			<?php } else { ?>
+				<b>No hay destacados.</b>
+			<?php } ?>
 		</div>
 	</div>
 

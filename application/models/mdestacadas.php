@@ -13,6 +13,7 @@ class Mdestacadas extends CI_Model
         $this->db->from('destacadas d');
         $this->db->join('promociones p', 'd.promoid = p.id', 'left');
         $this->db->where('d.provid', $provid);
+        $this->db->order_by("d.weight", "ASC"); 
         $query = $this->db->get();
         if ( $query->num_rows() > 0 ) {
             return $query->result();
@@ -44,11 +45,6 @@ class Mdestacadas extends CI_Model
         return $rows;
     }
 
-    public function destacadas_save_conf($data) {
-        $this->db->where('variable', 'ndestacadas');
-        $this->db->update('variables', $data);
-    }
-
     public function destacadas_get_conf($variable) {
         $query = $this->db->query("SELECT value FROM variables WHERE variable = '$variable'");
         foreach ( $query->result() as $row ) {
@@ -59,5 +55,22 @@ class Mdestacadas extends CI_Model
     public function destacadas_update($data) {
         $this->db->where('id', $data['id']);
         $this->db->update('destacadas', $data);
+    }
+
+    public function destacadas_delete($id) {
+        $this->db->delete('destacadas', array('id' => $id));
+    }
+
+    public function destacadas_delete_bypromo($promoid) {
+        $this->db->delete('destacadas', array('promoid' => $id));
+    }
+
+    public function destacadas_sort($data) {
+        $w = 0;
+        foreach ( $data as $id ) {
+            $this->db->where('id', $id);
+            $this->db->update('destacadas', array('weight' => $w));
+            $w++;
+        }
     }
 }

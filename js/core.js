@@ -58,13 +58,19 @@ var sn ={}
       $('.ui-list li:not(.ui-divider) > a',$element).on('click.libui',function(e){
         e.preventDefault();
         var $el = $(this),ps;
-        if (!$el.parent().is('.ui-disabled')) { $el.closest('.ui-dropdown').find('.ui-caption span').html( $el.html()); }
+        if (!$el.parent().is('.ui-disabled')) $el.closest('.ui-dropdown').find('.ui-caption span').html( $el.html());
         $element.children('.ui-caption').trigger('click.libui');
-        $('input[type=hidden]',$element).val($el.data('value'));
+        $('input[type=hidden]',$element).val($el.data('value')).trigger('change');
         if (ps = $element.data('panels')){ $('#'+ps).children('div').hide().filter($el.attr('href')).show()};
-        $( "#provincias" ).submit();
       });
     }
+  }
+
+  sn.redirect = function(t){
+    var $t = $(t);
+
+    window.location.href = $t.val();
+
   }
 
   sn.more = function (t, event) {

@@ -36,6 +36,7 @@ class Mpromociones extends CI_Model
     //insertamos un nuevo usuario en la tabla users
     public function promociones_create($data) {
         $this->db->insert('promociones', $data);
+        return $this->db->insert_id();
     }
 
     public function promociones_provincia_create($id, $provincias) {
@@ -45,10 +46,10 @@ class Mpromociones extends CI_Model
         }
     }
 
-    public function promociones_destacadas($id, $provincias) {
+    public function promociones_destacadas($id, $destacadas) {
         $this->db->delete('destacadas', array('promoid' => $id));
-        foreach ( $provincias as $provincia ) {
-            $this->db->insert('destacadas', array('promoid' => $id, 'provid' => $provincia));
+        foreach ( $destacadas as $destacada ) {
+            $this->db->insert('destacadas', array('promoid' => $id, 'provid' => $destacada));
         }
     }
    

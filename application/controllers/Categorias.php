@@ -8,6 +8,7 @@ class Categorias extends CI_Controller {
         $this->load->database('default');
         $this->load->model('mcategorias');
         $this->load->model('mfiles');
+        is_logged_in() ? true : redirect('admin');
     }
 
 	public function index() {
@@ -40,8 +41,6 @@ class Categorias extends CI_Controller {
 		else {
 			$imagenid = $this->input->post('imagen'); 
 		}
-		
-		$data['data'] = $this->mcategorias->categorias_entrys();
 		$formdata = array (
 			'id' => $id,
 			'categoria' => $this->input->post('categoria'),

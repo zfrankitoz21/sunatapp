@@ -106,9 +106,9 @@
 				La empresa es la única responsable ante los colboradores por los servicios prestados.<br><br>
 				Oferta por tiempo limitado<br><br>
 
-				<div class="row-form"><span>Nombre y Apellido:</span><span class="underline" style="width:182px;"></span> </div>
+				<div class="row-form"><span>Nombre y Apellido:</span><input type="text" class="textUser" style="width:182px;"></div>
 
-				<div class="row-form"><span>DNI:</span><span class="underline" style="width:270px;"></span> </div>
+				<div class="row-form"><span>DNI:</span><input type="text" maxlength="8" class="textUser" style="width:182px;"></span> </div>
 
 				<a href="#" class="button-print" onclick="window.print();"><i class="icon-print"></i> Descargar tu promoción</a>
 

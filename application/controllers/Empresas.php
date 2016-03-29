@@ -8,6 +8,7 @@ class Empresas extends CI_Controller {
         $this->load->database('default');
         $this->load->model('mempresas');
         $this->load->model('mfiles');
+        is_logged_in() ? true : redirect('admin');
     }
 
 	public function index() {

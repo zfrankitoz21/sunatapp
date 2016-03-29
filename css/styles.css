@@ -378,8 +378,9 @@ footer > .content{ position: relative; z-index: 1; background: url(../img/right_
 .vale-print .header-vale{ margin-bottom: 27px; }
 .vale-print .body-vale{ font-size: 13px; font-family: 'GothamLight', Arial; color: #9b9d9e; }
 .vale-print .row-form{ margin-bottom: 15px;}
-.vale-print .row-form > span{ display: inline-block; vertical-align: bottom;}
+.vale-print .row-form > span{ display: inline-block; vertical-align: middle;}
 .vale-print .row-form > .underline{ height: 15px; border-bottom: 1px solid #ccc; display: inline-block; vertical-align: bottom; min-width: 150px; margin-left: 5px;} 
+.vale-print .row-form > .textUser{ border-bottom: 1px solid #ccc; display: inline-block; border-top: 0; border-left: 0; border-right: 0; padding: 3px 6px;}
 .vale-print .button-print{ background: #0063a8; color: #fff; display: inline-block; font-size: 12px; font-family: 'GothamBold', Arial; padding: 12px 12px;}
 .vale-print .button-print > i{ margin-right: 5px;}
 

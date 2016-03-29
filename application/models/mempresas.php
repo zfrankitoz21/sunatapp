@@ -39,8 +39,7 @@ class Mempresas extends CI_Model
     }
    
     //eliminamos al usuario con id = 1
-    public function empresas_delete($id)
-    {
+    public function empresas_delete($id) {
         $this->db->delete('empresas', array('id' => $id));
     }
 

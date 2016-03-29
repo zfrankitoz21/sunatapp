@@ -84,7 +84,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</td>
 				</tr>
 				<tr>
-					<td>Provincias :</td>
+					<td>Provincias : </td>
 					<td>
 						<select multiple name="provincias[]">
 							<?php foreach ( $provincias as $key => $value ) { ?>

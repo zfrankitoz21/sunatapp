@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta charset="utf-8">
 	<title>SUNAT INTRANET</title>
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/style.css">
-		<link rel="stylesheet" href="<?=base_url()?>css/font-awesome.min.css">
+	<link rel="stylesheet" href="<?=base_url()?>css/font-awesome.min.css">
 </head>
 <body>
 

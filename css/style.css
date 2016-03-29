@@ -441,7 +441,7 @@ header h1{ font-size: 15px;}
     padding: 8px 10px ;}
 .right-list-admin .list-menu > li > a:hover, .right-list-admin .list-menu > li > a.active{     background-color: #191e23;
     color: #00b9eb; }
-.right-list-admin .list-menu > li > a i{ margin-right: 5px; font-size: 14px;}
+.right-list-admin .list-menu > li > a i{ margin-right: 5px;}
 
 .right-content{ overflow: auto; background: #f1f1f1; padding: 15px; height: 100%;}
 .list-mod-panel{ margin-bottom: 20px;}
@@ -450,3 +450,7 @@ header h1{ font-size: 15px;}
 
 ul { list-style-type: none; margin: 0; padding: 0; margin-bottom: 10px; }
 li { margin: 5px; padding: 5px; }
+
+.header-inner a {
+  color: white;
+}

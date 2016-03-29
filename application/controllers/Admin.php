@@ -5,10 +5,28 @@ class Admin extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->database('default');
     }
 
 	public function index() {
-		$this->load->view('admin');
+		$this->load->view('login');
+	}
+
+	public function set_session() {
+		if ( $this->input->post('session_value') == 'admin' && $this->input->post('session_pass') == 'admin' ) {
+			$sess_array = array(
+				'set_value' => $this->input->post('session_value')
+			);
+			$this->session->set_userdata('session_data', $sess_array);
+			redirect('promocion');
+		}
+		else {
+			redirect('admin');
+		}
+	}
+
+	public function unset_session() {
+		$sess_array = array('set_value' => '');
+		$this->session->unset_userdata('session_data', $sess_array);
+		redirect('admin');
 	}
 }

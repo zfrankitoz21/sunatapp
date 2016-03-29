@@ -14,15 +14,9 @@ class Mfiles extends CI_Model
 
     public function get_file($id) {
         $query = $this->db->query("SELECT nombre FROM files WHERE id = $id");
-
         foreach ($query->result() as $row) {
             return $row->nombre;
         }
-
-        /*if ($query->num_rows() > 0)
-           return $query->row(0);
-        else
-            return 0;*/
     }
 
 }
